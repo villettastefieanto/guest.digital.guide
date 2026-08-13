@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ottimizzato per la Safe Area di iPhone e iPad -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Villa Stefi e Anto - Guida Digitale Ospiti</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0284C7;
+            --primary-dark: #0369A1;
+            --accent: #E07A5F;
+            --accent-light: #F4F1DE;
+            --bg-body: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            /* Padding dinamico per supportare la Safe Area di iOS */
+            padding-bottom: calc(90px + env(safe-area-inset-bottom));
+            line-height: 1.5;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0284C7 0%, #0F172A 100%), 
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            color: white;
+            padding: 32px 20px 28px 20px;
+            text-align: center;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .quick-bar {
+            display: flex;
+            justify-content: space-around;
+            background: var(--bg-card);
+            margin: -20px 16px 20px 16px;
+            padding: 14px 10px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 10;
+        }
+
+        .quick-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .quick-item:not(:last-child) {
+            border-right: 1px solid var(--border);
+        }
+
+        .quick-item .icon {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        .quick-item .label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .quick-item .val {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.25s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-dark);
+        }
+
+        .card-title .icon {
+            background: #E0F2FE;
+            color: var(--primary);
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 16px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #E0F2FE;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .wifi-box {
+            background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+            border: 1px solid #BAE6FD;
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .wifi-field {
+            margin-bottom: 10px;
+        }
+
+        .wifi-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .wifi-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-copy {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+            box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+            /* Min touch target size for iOS/Android */
+            min-height: 44px; 
+        }
+
+        .btn-copy:active {
+            background: var(--primary-dark);
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 0.92rem;
+            color: var(--text-main);
+        }
+
+        .info-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #DCFCE7;
+            color: #16A34A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .warning-list li::before {
+            content: "!";
+            background: #FEF3C7;
+            color: #D97706;
+        }
+
+        .item-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            margin-bottom: 12px;
+            background: #FAFAFA;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .item-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: #F1F5F9;
+            color: var(--text-muted);
+            padding: 2px 8px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .tip-box {
+            background: #FFFBEB;
+            border-left: 3px solid #F59E0B;
+            padding: 8px 10px;
+            border-radius: 4px;
+            font-size: 0.83rem;
+            color: #78350F;
+            margin-bottom: 10px;
+        }
+
+        .btn-map, .btn-map-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            /* Enhance touch area */
+            padding: 6px 0;
+        }
+
+        .btn-map-inline {
+            background: #F0F9FF;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #BAE6FD;
+            margin-top: 4px;
+            margin-right: 6px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-btn .left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-btn .icon-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .icon-wa { background: #25D366; color: white; }
+        .icon-phone { background: #0284C7; color: white; }
+        .icon-emergency { background: #EF4444; color: white; }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            /* Supporto Webkit per iOS Safari/Edge */
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            /* Padding dinamico per la Home Indicator (Tacca bassa) di iOS */
+            padding: 10px 0 calc(12px + env(safe-area-inset-bottom)) 0;
+            z-index: 1000;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+
+        .nav-item .nav-icon {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .notice-box {
+            background: #FFFBEB;
+            border: 1px solid #FDE68A;
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            font-size: 0.85rem;
+            color: #92400E;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <span class="hero-badge">Costa Paradiso • Sardegna</span>
+        <h1>Villa Stefi e Anto</h1>
+        <p>La tua casa vacanze nel cuore della roccia rosa</p>
+    </header>
+
+    <!-- Quick Info Bar -->
+    <div class="quick-bar">
+        <div class="quick-item">
+            <span class="icon">🔑</span>
+            <div class="label">Check-In</div>
+            <div class="val">dalle 16:00</div>
+        </div>
+        <div class="quick-item">
+            <span class="icon">🚪</span>
+            <div class="label">Check-Out</div>
+            <div class="val">entro 10:00</div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="container">
+
+        <!-- TAB 1: INFO CASA -->
+        <section id="tab-casa" class="tab-content active">
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">📶</span>
+                    <span>Connessione Wi-Fi</span>
+                </div>
+                <div class="wifi-box">
+                    <div class="wifi-field">
+                        <div class="wifi-label">Nome Rete (SSID)</div>
+                        <div class="wifi-value">stel-Bosio</div>
+                    </div>
+                    <div class="wifi-field">
+                        <div class="wifi-label">Password</div>
+                        <div class="wifi-value" id="wifi-pass">costaparadiso22</div>
+                    </div>
+                    <button class="btn-copy" onclick="copyWifi()" type="button">
+                        <span>📋 Copia Password</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">🚗</span>
+                    <span>Parcheggio & Accesso</span>
+                </div>
+                <ul class="info-list">
+                    <li><strong>Posto Auto Riservato:</strong> È disponibile il posto auto riservato numero <strong>4</strong>.</li>
+                    <li><strong>Consigli Guida:</strong> Le strade di Costa Paradiso sono panoramiche con curve strette. Si raccomanda prudenza.</li>
+                    <li><strong>Cancello:</strong> Tenere sempre il cancello chiuso per evitare l'ingresso di animali selvatici della macchia mediterranea.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">🏊‍♂️</span>
+                    <span>Regolamento Piscina</span>
+                </div>
+                <ul class="info-list warning-list">
+                    <li><strong>Orari & Silenzio:</strong> Non ci sono orari rigidi, ma nelle ore notturne e al mattino presto è richiesto il rispetto della quiete.</li>
+                    <li><strong>Doccia Obbligatoria:</strong> Fare sempre la doccia prima di entrare in acqua.</li>
+                    <li><strong>Bambini:</strong> Devono essere sempre accompagnati da un adulto.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">♻️</span>
+                    <span>Raccolta Differenziata</span>
+                </div>
+                <ul class="info-list">
+                    <li>
+                        <strong>Punti di Raccolta Rifiuti:</strong>
+                        <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;">
+                            <a href="https://maps.app.goo.gl/GKRcvJA49fcJxqAV8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Point 1 (Mappa)</a>
+                            <a href="https://maps.app.goo.gl/cDpFekQEdM6PCDrk8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Point 2 (Mappa)</a>
+                        </div>
+                    </li>
+                    <li><strong>Rifiuti:</strong> Separare Plastica/Lattine, Umido, Vetro, Carta e Secco nei mastelli dedicati.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TAB 2: SPIAGGE -->
+        <section id="tab-spiagge" class="tab-content">
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">🏖️</span>
+                    <span>Spiagge & Calette</span>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Spiaggia di Li Cossi</div>
+                        <span class="item-tag">Iconica</span>
+                    </div>
+                    <div class="item-desc">Raggiungibile con una suggestiva passeggiata panoramica dal porticciolo.</div>
+                    <a href="https://maps.google.com/?q=Spiaggia+di+Li+Cossi" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Le Sorgenti</div>
+                        <span class="item-tag">Piscine Naturali</span>
+                    </div>
+                    <div class="item-desc">Rocce piatte e scese a mare spettacolari con acqua cristallina.</div>
+                    <a href="https://maps.google.com/?q=Le+Sorgenti+Costa+Paradiso" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">La Funtanedda</div>
+                        <span class="item-tag">La Marinedda</span>
+                    </div>
+                    <div class="item-desc">Splendida caletta con rocce modellate dal vento e mare limpido.</div>
+                    <a href="https://maps.app.goo.gl/jbXAYRytaq5zuiKG7?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Vignola Mare</div>
+                        <span class="item-tag">Panoramica</span>
+                    </div>
+                    <div class="item-desc">Spiaggia lunghissima e selvaggia dominata da una torre aragonese.</div>
+                    <a href="https://maps.app.goo.gl/gmjVorkXtDbiaovJ8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Naracu Nieddu</div>
+                        <span class="item-tag">Pineta</span>
+                    </div>
+                    <div class="item-desc">Immersa in una fitta pineta, oasi di pace con sabbia finissima.</div>
+                    <a href="https://maps.app.goo.gl/8DP91LzJXZjrSydZ8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Rena Majore</div>
+                        <span class="item-tag">Dune</span>
+                    </div>
+                    <div class="item-desc">Dune di sabbia bianchissima e mare dalle sfumature caraibiche.</div>
+                    <a href="https://maps.app.goo.gl/NaU7wqNnkAtwniBf9?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Cala Sarraina</div>
+                        <span class="item-tag">15 min auto</span>
+                    </div>
+                    <div class="item-desc">Baia selvaggia con sabbia fine, chiosco bar e tramonti indimenticabili.</div>
+                    <a href="https://maps.google.com/?q=Cala+Sarraina" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Spiaggia di Li Tinnari</div>
+                        <span class="item-tag">Natura</span>
+                    </div>
+                    <div class="item-desc">Spiaggia a forma di cuore fatta di piccoli ciottoli rosa.</div>
+                    <a href="https://maps.google.com/?q=Spiaggia+di+Tinnari" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: RISTORANTI -->
+        <section id="tab-gusto" class="tab-content">
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">🍽️</span>
+                    <span>Ristoranti & Drink</span>
+                </div>
+                
+                <div class="notice-box">
+                    <span>💡</span>
+                    <div><strong>Consiglio:</strong> È fortemente raccomandata la prenotazione in anticipo per tutti i locali!</div>
+                </div>
+
+                <div class="section-subtitle">
+                    <span>📍</span> <span>A Costa Paradiso</span>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Il Calice d'Oro</div>
+                        <span class="item-tag">Alta Qualità</span>
+                    </div>
+                    <div class="item-desc">Cucina raffinata e piatti eccellenti. Un po' più costoso, ma di alto livello.</div>
+                    <a href="https://goo.gl/maps/mj7JmLwhFRbdEPgW6" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Ristorante Soento</div>
+                        <span class="item-tag">Cucina Locale</span>
+                    </div>
+                    <div class="item-desc">Ottima opzione a Costa Paradiso per gustare specialità locali.</div>
+                    <a href="https://maps.app.goo.gl/VME91NPJn44tB1fR7?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Maya Restaurant</div>
+                        <span class="item-tag">Colazioni & Aperitivi</span>
+                    </div>
+                    <div class="item-desc">Location stupenda sulle scogliere. Perfetta per colazioni o aperitivi al tramonto.</div>
+                    <a href="https://goo.gl/maps/q7zAvJ3GxYcgqaGx6" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="section-subtitle">
+                    <span>🚗</span> <span>Fuori Costa Paradiso</span>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Il Geranio</div>
+                        <span class="item-tag">Tradizione</span>
+                    </div>
+                    <div class="item-desc">Accogliente ristorante nei dintorni per una piacevole cena fuori zona.</div>
+                    <a href="https://goo.gl/maps/ew6FCuZT2nfMob148" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">La Terrazza sul mare</div>
+                        <span class="item-tag">Pesce alla Griglia</span>
+                    </div>
+                    <div class="item-desc">Grigliate di pesce fantastiche ed un tramonto mozzafiato.</div>
+                    <a href="https://goo.gl/maps/ZZC2MgfUyV3LXP5z9" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Agriturismo Tuttusoni</div>
+                        <span class="item-tag">Tipico Sardo</span>
+                    </div>
+                    <div class="item-desc">Autentica cucina tipica sarda (nota: non ha vista mare).</div>
+                    <a href="https://goo.gl/maps/rTv3Wftud1zf4d3K9" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Agriturismo Santu Petru</div>
+                        <span class="item-tag">Tipico + Vista Mare</span>
+                    </div>
+                    <div class="item-desc">Cucina tradizionale sarda con bellissima vista mare.</div>
+                    <a href="https://goo.gl/maps/38ueoYo44yCJywhi7" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Almadia Restaurant</div>
+                        <span class="item-tag">Gourmet & Vista</span>
+                    </div>
+                    <div class="item-desc">Ambiente curato, cibo squisito e bellissima atmosfera.</div>
+                    <a href="https://maps.app.goo.gl/njpup4e7xbreF2bb7?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Jatika</div>
+                        <span class="item-tag">Lounge & Food</span>
+                    </div>
+                    <div class="item-desc">Ottima scelta nei dintorni per una cena con eccellente atmosfera.</div>
+                    <a href="https://maps.app.goo.gl/ykxa4ydcBKx3QjsX6?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: ESCURSIONI -->
+        <section id="tab-escursioni" class="tab-content">
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">⛵</span>
+                    <span>Escursioni & Esperienze</span>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Barca a Vela • Athena Sail</div>
+                        <span class="item-tag">La Maddalena</span>
+                    </div>
+                    <div class="item-desc">
+                        Esplora il parco de La Maddalena in barca a vela (12m). Partenze da Palau (~1h da Costa Paradiso).
+                    </div>
+                    <div class="tip-box">
+                        <strong>Tour disponibili:</strong><br>
+                        • 🌅 Sunset trip (uscita serale)<br>
+                        • 🌤️ Mezza giornata (mattina/pomeriggio)<br>
+                        • ☀️ Giornata intera con soste bagno
+                    </div>
+                    <a href="https://www.athenasail.com/" target="_blank" rel="noopener noreferrer" class="btn-map">🌐 Prenota su AthenaSail.com →</a>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">Isola dell'Asinara 4x4</div>
+                        <span class="item-tag">Tour Naturalistico</span>
+                    </div>
+                    <div class="item-desc">
+                        Tour in fuoristrada nel Parco Nazionale dell'Asinara alla scoperta degli asinelli bianchi e dell'ex carcere.
+                    </div>
+                    <div class="tip-box">
+                        🚗 <strong>Percorso:</strong> 1h di auto fino a Stintino, poi 20 min di traghetto.
+                    </div>
+                    <a href="https://www.asinara4x4.com/" target="_blank" rel="noopener noreferrer" class="btn-map">🌐 Prenota su Asinara4x4.com →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: CONTATTI -->
+        <section id="tab-contatti" class="tab-content">
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">📞</span>
+                    <span>Contatti Proprietari</span>
+                </div>
+                <a href="https://wa.me/393331234567?text=Ciao%20Stefi%20e%20Anto" class="contact-btn">
+                    <div class="left">
+                        <div class="icon-circle icon-wa">💬</div>
+                        <div>
+                            <div>Scrivici su WhatsApp</div>
+                            <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">Stefi & Anto</div>
+                        </div>
+                    </div>
+                    <span>→</span>
+                </a>
+                <a href="tel:+393331234567" class="contact-btn">
+                    <div class="left">
+                        <div class="icon-circle icon-phone">📞</div>
+                        <div>
+                            <div>Chiamata Diretta</div>
+                            <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">+39 333 1234567</div>
+                        </div>
+                    </div>
+                    <span>→</span>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="tel:112" class="contact-btn" style="border-color: #FECACA; background: #FEF2F2;">
+                    <div class="left">
+                        <div class="icon-circle icon-emergency">🚨</div>
+                        <div>
+                            <div style="color: #991B1B;">Emergenze</div>
+                            <div style="font-size: 0.78rem; font-weight: normal; color: #B91C1C;">Chiamare 112</div>
+                        </div>
+                    </div>
+                    <span>→</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <button type="button" class="nav-item active" onclick="switchTab('casa', this)">
+            <span class="nav-icon">🏡</span>
+            <span>Villa</span>
+        </button>
+        <button type="button" class="nav-item" onclick="switchTab('spiagge', this)">
+            <span class="nav-icon">🏖️</span>
+            <span>Spiagge</span>
+        </button>
+        <button type="button" class="nav-item" onclick="switchTab('gusto', this)">
+            <span class="nav-icon">🍽️</span>
+            <span>Ristoranti</span>
+        </button>
+        <button type="button" class="nav-item" onclick="switchTab('escursioni', this)">
+            <span class="nav-icon">⛵</span>
+            <span>Escursioni</span>
+        </button>
+        <button type="button" class="nav-item" onclick="switchTab('contatti', this)">
+            <span class="nav-icon">📞</span>
+            <span>Contatti</span>
+        </button>
+    </nav>
+
+    <script>
+        function switchTab(tabId, btn) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            const targetTab = document.getElementById('tab-' + tabId);
+            if (targetTab) targetTab.classList.add('active');
+
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+
+            if (btn) btn.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Script migliorato per supportare Safari/Edge su iOS con file locali
+        function copyWifi() {
+            const passText = document.getElementById('wifi-pass').innerText;
+            
+            // Metodo 1: Clipboard API moderna (funziona su server HTTPS e Android/Desktop)
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(passText).then(() => {
+                    alert('✅ Password Wi-Fi copiata con successo!');
+                }).catch(() => {
+                    fallbackCopy(passText);
+                });
+            } else {
+                // Metodo 2: Fallback per file locali su iOS (Safari/Edge/Chrome iPhone)
+                fallbackCopy(passText);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            // Previene lo scrolling su iOS durante il focus
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                const successful = document.execCommand('copy');
+                if(successful) {
+                    alert('✅ Password Wi-Fi copiata con successo!');
+                } else {
+                    alert('Password Wi-Fi: ' + text + '\n(Seleziona e copia manualmente)');
+                }
+            } catch (err) {
+                alert('Password Wi-Fi: ' + text + '\n(Seleziona e copia manualmente)');
+            }
+            document.body.removeChild(textArea);
+        }
+    </script>
+</body>
+</html>
+
