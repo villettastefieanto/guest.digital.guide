@@ -342,8 +342,72 @@
 
     <main class="container">
 
-        <!-- TAB 1: CHECK-IN -->
-        <section id="tab-checkin" class="tab-content active">
+        <!-- TAB 1: INFO CASA (PAGINA PRINCIPALE DI APERTURA) -->
+        <section id="tab-casa" class="tab-content active">
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">📶</span>
+                    <span>Connessione Wi-Fi</span>
+                </div>
+                <div class="wifi-box">
+                    <div class="wifi-field">
+                        <div class="wifi-label">Nome Rete (SSID)</div>
+                        <div class="wifi-value">stel-Bosio</div>
+                    </div>
+                    <div class="wifi-field">
+                        <div class="wifi-label">Password</div>
+                        <div class="wifi-value" id="wifi-pass">costaparadiso22</div>
+                    </div>
+                    <button class="btn-copy" onclick="copyWifi()" type="button">
+                        <span>📋 Copia Password</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">🚗</span>
+                    <span>Parcheggio & Accesso</span>
+                </div>
+                <ul class="info-list">
+                    <li><strong>Posto Auto Riservato:</strong> È disponibile il posto auto riservato numero <strong>4</strong>.</li>
+                    <li><strong>Consigli Guida:</strong> Le strade di Costa Paradiso sono panoramiche con curve strette. Si raccomanda prudenza.</li>
+                    <li><strong>Cancello:</strong> Tenere sempre il cancello chiuso per evitare l'ingresso di animali selvatici della macchia mediterranea.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">🏊‍♂️</span>
+                    <span>Regolamento Piscina</span>
+                </div>
+                <ul class="info-list warning-list">
+                    <li><strong>Orari & Silenzio:</strong> Non ci sono orari rigidi, ma nelle ore notturne e al mattino presto è richiesto il rispetto della quiete.</li>
+                    <li><strong>Doccia Obbligatoria:</strong> Fare sempre la doccia prima di entrare in acqua.</li>
+                    <li><strong>Bambini:</strong> Devono essere sempre accompagnati da un adulto.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">♻️</span>
+                    <span>Raccolta Differenziata</span>
+                </div>
+                <ul class="info-list">
+                    <li>
+                        <strong>Punti di Raccolta Rifiuti:</strong>
+                        <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;">
+                            <a href="https://maps.app.goo.gl/GKRcvJA49fcJxqAV8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Point 1 (Mappa)</a>
+                            <a href="https://maps.app.goo.gl/cDpFekQEdM6PCDrk8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Point 2 (Mappa)</a>
+                        </div>
+                    </li>
+                    <li><strong>Rifiuti:</strong> Separare Plastica/Lattine, Umido, Vetro, Carta e Secco nei mastelli dedicati.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TAB 2: CHECK-IN -->
+        <section id="tab-checkin" class="tab-content">
             <div class="card">
                 <div class="card-title">
                     <span class="icon">📍</span>
@@ -433,71 +497,8 @@
                 </a>
             </div>
         </section>
-        <!-- TAB 2: INFO CASA -->
-        <section id="tab-casa" class="tab-content">
-            <div class="card">
-                <div class="card-title">
-                    <span class="icon">📶</span>
-                    <span>Connessione Wi-Fi</span>
-                </div>
-                <div class="wifi-box">
-                    <div class="wifi-field">
-                        <div class="wifi-label">Nome Rete (SSID)</div>
-                        <div class="wifi-value">stel-Bosio</div>
-                    </div>
-                    <div class="wifi-field">
-                        <div class="wifi-label">Password</div>
-                        <div class="wifi-value" id="wifi-pass">costaparadiso22</div>
-                    </div>
-                    <button class="btn-copy" onclick="copyWifi()" type="button">
-                        <span>📋 Copia Password</span>
-                    </button>
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="card-title">
-                    <span class="icon">🚗</span>
-                    <span>Parcheggio & Accesso</span>
-                </div>
-                <ul class="info-list">
-                    <li><strong>Posto Auto Riservato:</strong> È disponibile il posto auto riservato numero <strong>4</strong>.</li>
-                    <li><strong>Consigli Guida:</strong> Le strade di Costa Paradiso sono panoramiche con curve strette. Si raccomanda prudenza.</li>
-                    <li><strong>Cancello:</strong> Tenere sempre il cancello chiuso per evitare l'ingresso di animali selvatici della macchia mediterranea.</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <div class="card-title">
-                    <span class="icon">🏊‍♂️</span>
-                    <span>Regolamento Piscina</span>
-                </div>
-                <ul class="info-list warning-list">
-                    <li><strong>Orari & Silenzio:</strong> Non ci sono orari rigidi, ma nelle ore notturne e al mattino presto è richiesto il rispetto della quiete.</li>
-                    <li><strong>Doccia Obbligatoria:</strong> Fare sempre la doccia prima di entrare in acqua.</li>
-                    <li><strong>Bambini:</strong> Devono essere sempre accompagnati da un adulto.</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <div class="card-title">
-                    <span class="icon">♻️</span>
-                    <span>Raccolta Differenziata</span>
-                </div>
-                <ul class="info-list">
-                    <li>
-                        <strong>Punti di Raccolta Rifiuti:</strong>
-                        <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;">
-                            <a href="https://maps.app.goo.gl/GKRcvJA49fcJxqAV8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Point 1 (Mappa)</a>
-                            <a href="https://maps.app.goo.gl/cDpFekQEdM6PCDrk8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Point 2 (Mappa)</a>
-                        </div>
-                    </li>
-                    <li><strong>Rifiuti:</strong> Separare Plastica/Lattine, Umido, Vetro, Carta e Secco nei mastelli dedicati.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- TAB 3: SPIAGGE -->
+                <!-- TAB 3: SPIAGGE -->
         <section id="tab-spiagge" class="tab-content">
             <div class="card">
                 <div class="card-title">
@@ -792,15 +793,15 @@
         </section>
     </main>
 
-    <!-- Bottom Navigation Bar -->
+    <!-- Bottom Navigation Bar (Inizia attiva su Villa) -->
     <nav class="bottom-nav">
-        <button type="button" class="nav-item active" onclick="switchTab('checkin', this)">
-            <span class="nav-icon">🔑</span>
-            <span>Check-in</span>
-        </button>
-        <button type="button" class="nav-item" onclick="switchTab('casa', this)">
+        <button type="button" class="nav-item active" onclick="switchTab('casa', this)">
             <span class="nav-icon">🏡</span>
             <span>Villa</span>
+        </button>
+        <button type="button" class="nav-item" onclick="switchTab('checkin', this)">
+            <span class="nav-icon">🔑</span>
+            <span>Check-in</span>
         </button>
         <button type="button" class="nav-item" onclick="switchTab('spiagge', this)">
             <span class="nav-icon">🏖️</span>
@@ -874,4 +875,3 @@
 </body>
 </html>
 
-        
