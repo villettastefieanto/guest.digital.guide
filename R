@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Villa Stefi e Anto - Digital Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: #F8FAFC;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #1E293B;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page-container {
+            width: 210mm;
+            height: 297mm;
+            background: #FFFFFF;
+            padding: 20mm 15mm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Elements for layout */
+        .header {
+            width: 100%;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #E0F2FE;
+            color: #0369A1;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 6px;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: #64748B;
+            font-weight: 500;
+        }
+
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #0284C7, #38BDF8);
+            border-radius: 2px;
+            margin: 18px auto;
+        }
+
+        .qr-section {
+            background: #F0F9FF;
+            border: 2px dashed #BAE6FD;
+            border-radius: 24px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 85%;
+        }
+
+        .qr-code {
+            width: 220px;
+            height: 220px;
+            background: #FFFFFF;
+            padding: 12px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            margin-bottom: 16px;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .qr-instruction {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0369A1;
+            margin-bottom: 4px;
+        }
+
+        .qr-subtext {
+            font-size: 0.85rem;
+            color: #64748B;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            width: 90%;
+            margin-top: 10px;
+        }
+
+        .feature-item {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer {
+            width: 100%;
+            border-top: 1px solid #E2E8F0;
+            padding-top: 12px;
+            font-size: 0.8rem;
+            color: #94A3B8;
+            word-break: break-all;
+        }
+
+        .url-link {
+            font-weight: 600;
+            color: #0284C7;
+        }
+
+        @media print {
+            body { background: none; }
+            .page-container { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <!-- Header -->
+        <div class="header">
+            <span class="badge">Costa Paradiso • Sardinia</span>
+            <h1>Villa Stefi e Anto</h1>
+            <p class="subtitle">Welcome / Benvenuti / Bienvenue / Bienvenidos</p>
+            <div class="divider"></div>
+        </div>
+
+        <!-- QR Code Container -->
+        <div class="qr-section">
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://villettastefieanto.github.io/guest.digital.guide/" alt="Guest Digital Guide QR Code">
+            </div>
+            <div class="qr-instruction">📷 Scan with your phone camera</div>
+            <div class="qr-subtext">Inquadra per accedere alla Digital Guest Guide</div>
+        </div>
+
+        <!-- Included services in guide -->
+        <div class="features">
+            <div class="feature-item">📶 Wi-Fi Details</div>
+            <div class="feature-item">🔑 Check-in Info</div>
+            <div class="feature-item">🏖️ Beaches & Coves</div>
+            <div class="feature-item">🍽️ Restaurants & Bars</div>
+            <div class="feature-item">⛵ Boat Tours & Excursions</div>
+            <div class="feature-item">📞 Emergency Contacts</div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Digital Guide URL: <span class="url-link">https://villettastefieanto.github.io/guest.digital.guide/</span>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+                            
