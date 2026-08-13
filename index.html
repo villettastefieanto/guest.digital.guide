@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Villa Stefi e Anto - Guida Digitale Ospiti</title>
+    <title>Villa Stefi e Anto - Digital Guest Guide</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -44,6 +44,35 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Language Switcher Bar */
+        .lang-picker {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: white;
+            color: var(--primary-dark);
+            border-color: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
         .hero {
             background: linear-gradient(135deg, #0284C7 0%, #0F172A 100%), 
                         url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80');
@@ -51,7 +80,7 @@
             background-position: center;
             background-blend-mode: overlay;
             color: white;
-            padding: 32px 20px 28px 20px;
+            padding: 24px 20px 24px 20px;
             text-align: center;
             border-bottom-left-radius: 24px;
             border-bottom-right-radius: 24px;
@@ -70,7 +99,7 @@
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
@@ -330,36 +359,72 @@
             color: #991B1B;
             margin-bottom: 16px;
         }
+
+        /* Language visibility handling */
+        [data-lang] { display: none; }
+        body.lang-en [data-lang="en"] { display: block; }
+        body.lang-it [data-lang="it"] { display: block; }
+        body.lang-fr [data-lang="fr"] { display: block; }
+        body.lang-es [data-lang="es"] { display: block; }
+
+        span[data-lang], strong[data-lang], div[data-lang].inline-block {
+            display: none !important;
+        }
+        body.lang-en span[data-lang="en"], body.lang-en strong[data-lang="en"], body.lang-en div[data-lang="en"].inline-block { display: inline !important; }
+        body.lang-it span[data-lang="it"], body.lang-it strong[data-lang="it"], body.lang-it div[data-lang="it"].inline-block { display: inline !important; }
+        body.lang-fr span[data-lang="fr"], body.lang-fr strong[data-lang="fr"], body.lang-fr div[data-lang="fr"].inline-block { display: inline !important; }
+        body.lang-es span[data-lang="es"], body.lang-es strong[data-lang="es"], body.lang-es div[data-lang="es"].inline-block { display: inline !important; }
     </style>
 </head>
-<body>
+<body class="lang-en">
 
     <header class="hero">
-        <span class="hero-badge">Costa Paradiso • Sardegna</span>
+        <div class="lang-picker">
+            <button type="button" class="lang-btn active" onclick="setLanguage('en')">🇬🇧 EN</button>
+            <button type="button" class="lang-btn" onclick="setLanguage('it')">🇮🇹 IT</button>
+            <button type="button" class="lang-btn" onclick="setLanguage('fr')">🇫🇷 FR</button>
+            <button type="button" class="lang-btn" onclick="setLanguage('es')">🇪🇸 ES</button>
+        </div>
+        <span class="hero-badge">Costa Paradiso • Sardinia</span>
         <h1>Villa Stefi e Anto</h1>
-        <p>La tua casa vacanze nel cuore della roccia rosa</p>
+        <p data-lang="en">Your vacation home in the heart of the pink rock</p>
+        <p data-lang="it">La tua casa vacanze nel cuore della roccia rosa</p>
+        <p data-lang="fr">Votre maison de vacances au cœur della roche rose</p>
+        <p data-lang="es">Tu casa de vacaciones en el corazón de la roca rosa</p>
     </header>
 
     <main class="container">
 
-        <!-- TAB 1: INFO CASA (PAGINA PRINCIPALE DI APERTURA) -->
+        <!-- TAB 1: VILLA INFO -->
         <section id="tab-casa" class="tab-content active">
             <div class="card">
                 <div class="card-title">
                     <span class="icon">📶</span>
-                    <span>Connessione Wi-Fi</span>
+                    <span data-lang="en">Wi-Fi Connection</span>
+                    <span data-lang="it">Connessione Wi-Fi</span>
+                    <span data-lang="fr">Connexion Wi-Fi</span>
+                    <span data-lang="es">Conexión Wi-Fi</span>
                 </div>
                 <div class="wifi-box">
                     <div class="wifi-field">
-                        <div class="wifi-label">Nome Rete (SSID)</div>
+                        <div class="wifi-label" data-lang="en">Network Name (SSID)</div>
+                        <div class="wifi-label" data-lang="it">Nome Rete (SSID)</div>
+                        <div class="wifi-label" data-lang="fr">Nom du réseau (SSID)</div>
+                        <div class="wifi-label" data-lang="es">Nombre de red (SSID)</div>
                         <div class="wifi-value">stel-Bosio</div>
                     </div>
                     <div class="wifi-field">
-                        <div class="wifi-label">Password</div>
+                        <div class="wifi-label" data-lang="en">Password</div>
+                        <div class="wifi-label" data-lang="it">Password</div>
+                        <div class="wifi-label" data-lang="fr">Mot de passe</div>
+                        <div class="wifi-label" data-lang="es">Contraseña</div>
                         <div class="wifi-value" id="wifi-pass">costaparadiso22</div>
                     </div>
                     <button class="btn-copy" onclick="copyWifi()" type="button">
-                        <span>📋 Copia Password</span>
+                        <span data-lang="en">📋 Copy Password</span>
+                        <span data-lang="it">📋 Copia Password</span>
+                        <span data-lang="fr">📋 Copier le mot de passe</span>
+                        <span data-lang="es">📋 Copiar contraseña</span>
                     </button>
                 </div>
             </div>
@@ -367,41 +432,116 @@
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🚗</span>
-                    <span>Parcheggio & Accesso</span>
+                    <span data-lang="en">Parking & Access</span>
+                    <span data-lang="it">Parcheggio & Accesso</span>
+                    <span data-lang="fr">Parking et accès</span>
+                    <span data-lang="es">Aparcamiento y acceso</span>
                 </div>
                 <ul class="info-list">
-                    <li><strong>Posto Auto:</strong> È disponibile il posto auto riservato numero <strong>4</strong>.</li>
-                    <li><strong>Consigli Guida:</strong> Le strade di Costa Paradiso sono panoramiche con curve strette. Si raccomanda prudenza.</li>
-                    <li><strong>Cancello:</strong> Tenere sempre il cancello chiuso per evitare l'ingresso di animali selvatici della macchia mediterranea.</li>
+                    <li>
+                        <strong data-lang="en">Reserved Parking Spot:</strong>
+                        <strong data-lang="it">Posto Auto Riservato:</strong>
+                        <strong data-lang="fr">Place de parking réservée :</strong>
+                        <strong data-lang="es">Plaza de aparcamiento reservada:</strong>
+                        <span data-lang="en">Reserved parking space number <strong>4</strong> is available.</span>
+                        <span data-lang="it">È disponibile il posto auto riservato numero <strong>4</strong>.</span>
+                        <span data-lang="fr">La place de parking réservée numéro <strong>4</strong> est disponible.</span>
+                        <span data-lang="es">La plaza de aparcamiento reservada número <strong>4</strong> está disponible.</span>
+                    </li>
+                    <li>
+                        <strong data-lang="en">Driving Advice:</strong>
+                        <strong data-lang="it">Consigli Guida:</strong>
+                        <strong data-lang="fr">Conseils de conduite :</strong>
+                        <strong data-lang="es">Consejos de conducción:</strong>
+                        <span data-lang="en">The roads in Costa Paradiso are scenic with tight turns. Please drive carefully.</span>
+                        <span data-lang="it">Le strade di Costa Paradiso sono panoramiche con curve strette. Si raccomanda prudenza.</span>
+                        <span data-lang="fr">Les routes de Costa Paradiso sont panoramiques avec des virages serrés. Soyez prudent.</span>
+                        <span data-lang="es">Las carreteras de Costa Paradiso son panorámicas con curvas cerradas. Conduzca con precaución.</span>
+                    </li>
+                    <li>
+                        <strong data-lang="en">Gate:</strong>
+                        <strong data-lang="it">Cancello:</strong>
+                        <strong data-lang="fr">Portail :</strong>
+                        <strong data-lang="es">Puerta:</strong>
+                        <span data-lang="en">Always keep the gate closed to prevent local wildlife from entering the property.</span>
+                        <span data-lang="it">Tenere sempre il cancello chiuso per evitare l'ingresso di animali selvatici.</span>
+                        <span data-lang="fr">Gardez toujours le portail fermé pour éviter l'entrée d'animaux sauvages.</span>
+                        <span data-lang="es">Mantenga siempre la puerta cerrada para evitar que entren animales salvajes.</span>
+                    </li>
                 </ul>
             </div>
 
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🏊‍♂️</span>
-                    <span>Regolamento Piscina</span>
+                    <span data-lang="en">Swimming Pool Rules</span>
+                    <span data-lang="it">Regolamento Piscina</span>
+                    <span data-lang="fr">Règlement de la piscine</span>
+                    <span data-lang="es">Reglamento de la piscina</span>
                 </div>
                 <ul class="info-list warning-list">
-                    <li><strong>Orari & Silenzio:</strong> Non ci sono orari rigidi, ma nelle ore notturne e al mattino presto è richiesto il rispetto della quiete.</li>
-                    <li><strong>Doccia Obbligatoria:</strong> Fare sempre la doccia prima di entrare in acqua.</li>
-                    <li><strong>Bambini:</strong> Devono essere sempre accompagnati da un adulto.</li>
+                    <li>
+                        <strong data-lang="en">Hours & Quiet Times:</strong>
+                        <strong data-lang="it">Orari & Silenzio:</strong>
+                        <strong data-lang="fr">Heures et silence :</strong>
+                        <strong data-lang="es">Horarios y silencio:</strong>
+                        <span data-lang="en">There are no strict hours, but quietness is required at night and early in the morning.</span>
+                        <span data-lang="it">Non ci sono orari rigidi, ma di notte e al mattino presto è richiesto il rispetto della quiete.</span>
+                        <span data-lang="fr">Pas d'horaires stricts, mais le silence est requis la nuit et tôt le matin.</span>
+                        <span data-lang="es">No hay horarios estrictos, pero se requiere silencio por la noche y temprano en la mañana.</span>
+                    </li>
+                    <li>
+                        <strong data-lang="en">Mandatory Shower:</strong>
+                        <strong data-lang="it">Doccia Obbligatoria:</strong>
+                        <strong data-lang="fr">Douche obligatoire :</strong>
+                        <strong data-lang="es">Ducha obligatoria:</strong>
+                        <span data-lang="en">Always shower before entering the pool.</span>
+                        <span data-lang="it">Fare sempre la doccia prima di entrare in acqua.</span>
+                        <span data-lang="fr">Prenez toujours une douche avant d'entrer dans l'eau.</span>
+                        <span data-lang="es">Dúchese siempre antes de entrar al agua.</span>
+                    </li>
+                    <li>
+                        <strong data-lang="en">Children:</strong>
+                        <strong data-lang="it">Bambini:</strong>
+                        <strong data-lang="fr">Enfants :</strong>
+                        <strong data-lang="es">Niños:</strong>
+                        <span data-lang="en">Must always be accompanied by an adult.</span>
+                        <span data-lang="it">Devono essere sempre accompagnati da un adulto.</span>
+                        <span data-lang="fr">Doivent toujours être accompagnés d'un adulte.</span>
+                        <span data-lang="es">Deben estar siempre acompañados por un adulto.</span>
+                    </li>
                 </ul>
             </div>
 
             <div class="card">
                 <div class="card-title">
                     <span class="icon">♻️</span>
-                    <span>Raccolta Differenziata</span>
+                    <span data-lang="en">Recycling & Waste</span>
+                    <span data-lang="it">Raccolta Differenziata</span>
+                    <span data-lang="fr">Tri sélectif</span>
+                    <span data-lang="es">Reciclaje de residuos</span>
                 </div>
                 <ul class="info-list">
                     <li>
-                        <strong>Punti di Raccolta Rifiuti:</strong>
+                        <strong data-lang="en">Waste Collection Points:</strong>
+                        <strong data-lang="it">Punti di Raccolta Rifiuti:</strong>
+                        <strong data-lang="fr">Points de collecte des déchets :</strong>
+                        <strong data-lang="es">Puntos de recogida de residuos:</strong>
                         <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;">
-                            <a href="https://maps.app.goo.gl/GKRcvJA49fcJxqAV8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Point 1 (Mappa)</a>
-                            <a href="https://maps.app.goo.gl/cDpFekQEdM6PCDrk8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Point 2 (Mappa)</a>
+                            <a href="https://maps.app.goo.gl/GKRcvJA49fcJxqAV8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Point 1 (Map)</a>
+                            <a href="https://maps.app.goo.gl/cDpFekQEdM6PCDrk8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Point 2 (Map)</a>
                         </div>
                     </li>
-                    <li><strong>Rifiuti:</strong> Separare Plastica/Lattine, Umido, Vetro, Carta e Secco.</li>
+                    <li>
+                        <strong data-lang="en">Sorting:</strong>
+                        <strong data-lang="it">Rifiuti:</strong>
+                        <strong data-lang="fr">Tri :</strong>
+                        <strong data-lang="es">Clasificación:</strong>
+                        <span data-lang="en">Please separate Plastic/Cans, Organic, Glass, Paper, and General Waste into the designated bins.</span>
+                        <span data-lang="it">Separare Plastica/Lattine, Umido, Vetro, Carta e Secco nei mastelli dedicati.</span>
+                        <span data-lang="fr">Séparez le plastique/cannettes, l'organique, le verre, le papier et les déchets ménagers.</span>
+                        <span data-lang="es">Separe el plástico/latas, lo orgánico, el vidrio, el papel y la basura general en los cubos correspondientes.</span>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -411,35 +551,64 @@
             <div class="card">
                 <div class="card-title">
                     <span class="icon">📍</span>
-                    <span>Check-in Location</span>
+                    <span data-lang="en">Check-in Location</span>
+                    <span data-lang="it">Luogo del Check-in</span>
+                    <span data-lang="fr">Lieu de Check-in</span>
+                    <span data-lang="es">Lugar de Check-in</span>
                 </div>
                 
                 <div class="alert-box">
-                    <strong>⚠️ Important:</strong> Check-in does <strong>NOT</strong> take place directly at the property. Please make sure to go to the reception office first.
+                    <span data-lang="en"><strong>⚠️ Important:</strong> Check-in does <strong>NOT</strong> take place directly at the property. Please make sure to go to the reception office first.</span>
+                    <span data-lang="it"><strong>⚠️ Importante:</strong> Il check-in <strong>NON</strong> avviene direttamente in struttura. Recarsi prima all'ufficio reception.</span>
+                    <span data-lang="fr"><strong>⚠️ Important :</strong> Le check-in ne se fait <strong>PAS</strong> directement au logement. Rendez-vous d'abord à la réception.</span>
+                    <span data-lang="es"><strong>⚠️ Importante:</strong> El check-in <strong>NO</strong> se realiza directamente en la propiedad. Diríjase primero a la recepción.</span>
                 </div>
 
-                <p style="font-size: 0.95rem; margin-bottom: 10px;"><strong>SIT Servizi Immobiliari Turistici</strong><br>Località Costa Paradiso 07038<br>Trinità D'Agultu e Vignola, OT</p>
+                <p style="font-size: 0.95rem; margin-bottom: 10px;">
+                    <strong>SIT Servizi Immobiliari Turistici</strong><br>Località Costa Paradiso 07038<br>Trinità D'Agultu e Vignola, OT
+                </p>
                 
                 <a href="https://tinyurl.com/villastefieantocheckin" target="_blank" rel="noopener noreferrer" class="btn-map-inline" style="display: inline-block; width: 100%; text-align: center; padding: 10px; margin-top: 8px;">
-                    📍 Open Location on Google Maps →
+                    <span data-lang="en">📍 Open Location on Google Maps →</span>
+                    <span data-lang="it">📍 Apri la Posizione su Google Maps →</span>
+                    <span data-lang="fr">📍 Ouvrir la position sur Google Maps →</span>
+                    <span data-lang="es">📍 Abrir ubicación en Google Maps →</span>
                 </a>
             </div>
 
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🕐</span>
-                    <span>Check-in & Check-out Hours</span>
+                    <span data-lang="en">Check-in & Check-out Hours</span>
+                    <span data-lang="it">Orari Check-in e Check-out</span>
+                    <span data-lang="fr">Horaires de Check-in & Check-out</span>
+                    <span data-lang="es">Horarios de Check-in y Check-out</span>
                 </div>
                 <ul class="info-list">
-                    <li><strong>Check-in Hours:</strong>
+                    <li>
+                        <strong data-lang="en">Check-in Hours:</strong>
+                        <strong data-lang="it">Orario Check-in:</strong>
+                        <strong data-lang="fr">Heures de Check-in :</strong>
+                        <strong data-lang="es">Horario de Check-in:</strong>
                         <br>• 9:00 AM – 1:00 PM
                         <br>• 4:00 PM – 8:00 PM
                         <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">
-                            If you plan to arrive outside these time slots, please let us know in advance. Late-night arrivals may incur an extra fee.
+                            <span data-lang="en">If you plan to arrive outside these time slots, please let us know in advance. Late-night arrivals may incur an extra fee.</span>
+                            <span data-lang="it">Se prevedi di arrivare fuori da questi orari, avvisaci in anticipo. Gli arrivi in tarda serata potrebbero comportare un supplemento.</span>
+                            <span data-lang="fr">Si vous prévoyez d'arriver en dehors de ces horaires, prévenez-nous à l'avance. Des frais supplémentaires peuvent s'appliquer tard le soir.</span>
+                            <span data-lang="es">Si planea llegar fuera de este horario, avísenos con antelación. Las llegadas nocturnas pueden conllevar un suplemento.</span>
                         </div>
                     </li>
-                    <li><strong>Check-out Hours:</strong>
-                        <br>Must be completed by <strong>10:00 AM</strong> (contact us if you have different needs).
+                    <li>
+                        <strong data-lang="en">Check-out Hours:</strong>
+                        <strong data-lang="it">Orario Check-out:</strong>
+                        <strong data-lang="fr">Heure de Check-out :</strong>
+                        <strong data-lang="es">Horario de Check-out:</strong>
+                        <br>
+                        <span data-lang="en">Must be completed by <strong>10:00 AM</strong> (contact us if you have special needs).</span>
+                        <span data-lang="it">Entro le ore <strong>10:00</strong> (contattaci per esigenze particolari).</span>
+                        <span data-lang="fr">Avant <strong>10h00</strong> (contactez-nous en cas de besoin spécifique).</span>
+                        <span data-lang="es">Antes de las <strong>10:00 AM</strong> (contáctenos si tiene alguna necesidad especial).</span>
                     </li>
                 </ul>
             </div>
@@ -447,34 +616,49 @@
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🪪</span>
-                    <span>Documents Required</span>
+                    <span data-lang="en">Required Documents</span>
+                    <span data-lang="it">Documenti Richiesti</span>
+                    <span data-lang="fr">Documents requis</span>
+                    <span data-lang="es">Documentos requeridos</span>
                 </div>
                 <p style="font-size: 0.9rem; color: var(--text-main);">
-                    Upon arrival, you will be asked to present a valid government-issued ID (passport, national ID card, or driver's license) for <strong>all guests</strong>. This is a standard legal requirement. Please make sure everyone in your group has their document ready.
+                    <span data-lang="en">Upon arrival, you will be asked to present a valid government-issued ID (passport, national ID card, or driver's license) for <strong>all guests</strong>. This is a legal requirement in Italy.</span>
+                    <span data-lang="it">All'arrivo verrà richiesto un documento d'identità valido per <strong>tutti gli ospiti</strong>. È un obbligo di legge.</span>
+                    <span data-lang="fr">À votre arrivée, une pièce d'identité valide vous sera demandée pour <strong>tous les clients</strong>. C'est una obligation légale en Italie.</span>
+                    <span data-lang="es">A su llegada, se le solicitará un documento de identidad válido para <strong>todos los huéspedes</strong>. Es un requisito legal en Italia.</span>
                 </p>
             </div>
 
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🙋</span>
-                    <span>You're in Good Hands</span>
+                    <span data-lang="en">You're in Good Hands</span>
+                    <span data-lang="it">Accoglienza Personale</span>
+                    <span data-lang="fr">Vous êtes entre de bonnes mains</span>
+                    <span data-lang="es">Está en buenas manos</span>
                 </div>
                 <p style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 12px;">
-                    A trusted person will be there to welcome you personally. They will escort you to the property and walk you through everything you need to know: house rules, appliances, Wi-Fi, key handling, and more.
+                    <span data-lang="en">A trusted contact person will welcome you personally, escort you to the property, and show you everything you need to know (house rules, Wi-Fi, key handling, appliances).</span>
+                    <span data-lang="it">Una persona di fiducia ti accoglierà di persona, ti accompagnerà alla struttura e ti mostrerà tutto ciò che c'è da sapere.</span>
+                    <span data-lang="fr">Une personne de confiance vous accueillera en personne, vous accompagnera au logement et vous expliquera tout.</span>
+                    <span data-lang="es">Una persona de confianza le dará la bienvenida en persona, le acompañará a la propiedad y le explicará todo lo necesario.</span>
                 </p>
                 <div class="tip-box">
-                    ⏱️ <strong>Heads Up:</strong> If possible, please send us a message about <strong>1 hour before your arrival</strong> so we can be ready to welcome you!
+                    ⏱️ <span data-lang="en"><strong>Heads Up:</strong> Please send us a message about <strong>1 hour before your arrival</strong> so we can be ready for you!</span>
+                    <span data-lang="it"><strong>Avviso:</strong> Invia un messaggio circa <strong>1 ora prima del tuo arrivo</strong> per permetterci di prepararci al meglio!</span>
+                    <span data-lang="fr"><strong>Rappel :</strong> Envoyez-nous un message environ <strong>1 heure avant votre arrivée</strong> !</span>
+                    <span data-lang="es"><strong>Aviso:</strong> ¡Envíenos un mensaje aproximadamente <strong>1 hora antes de su llegada</strong>!</span>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-title">
                     <span class="icon">📞</span>
-                    <span>Check-in Assistance Contacts</span>
+                    <span data-lang="en">Check-in Assistance Contacts</span>
+                    <span data-lang="it">Contatti Assistenza Check-in</span>
+                    <span data-lang="fr">Contacts d'assistance Check-in</span>
+                    <span data-lang="es">Contactos de asistencia Check-in</span>
                 </div>
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
-                    Reach out to these contacts at any time during your stay for assistance:
-                </p>
                 <a href="https://wa.me/393240909098" class="contact-btn" target="_blank">
                     <div class="left">
                         <div class="icon-circle icon-wa">💬</div>
@@ -489,7 +673,10 @@
                     <div class="left">
                         <div class="icon-circle icon-phone">📞</div>
                         <div>
-                            <div>Direct Phone Call</div>
+                            <div data-lang="en">Direct Phone Call</div>
+                            <div data-lang="it">Chiamata Diretta</div>
+                            <div data-lang="fr">Appel direct</div>
+                            <div data-lang="es">Llamada directa</div>
                             <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">+39 348 9693508</div>
                         </div>
                     </div>
@@ -498,29 +685,44 @@
             </div>
         </section>
 
-                <!-- TAB 3: SPIAGGE -->
+                <!-- TAB 3: BEACHES -->
         <section id="tab-spiagge" class="tab-content">
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🏖️</span>
-                    <span>Spiagge & Calette</span>
+                    <span data-lang="en">Beaches & Coves</span>
+                    <span data-lang="it">Spiagge & Calette</span>
+                    <span data-lang="fr">Plages & Criques</span>
+                    <span data-lang="es">Playas y Calas</span>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Spiaggia di Li Cossi</div>
-                        <span class="item-tag">Iconica</span>
+                        <span class="item-tag" data-lang="en">Iconic</span>
+                        <span class="item-tag" data-lang="it">Iconica</span>
+                        <span class="item-tag" data-lang="fr">Incontournable</span>
+                        <span class="item-tag" data-lang="es">Icónica</span>
                     </div>
-                    <div class="item-desc">Raggiungibile con una suggestiva passeggiata panoramica dal porticciolo.</div>
+                    <div class="item-desc" data-lang="en">Accessible via a scenic trail starting from the small marina.</div>
+                    <div class="item-desc" data-lang="it">Raggiungibile con una suggestiva passeggiata panoramica dal porticciolo.</div>
+                    <div class="item-desc" data-lang="fr">Accessible par un sentier panoramique à partir del petit port.</div>
+                    <div class="item-desc" data-lang="es">Accesible a través de un sendero panorámico desde el pequeño puerto.</div>
                     <a href="https://maps.google.com/?q=Spiaggia+di+Li+Cossi" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Le Sorgenti</div>
-                        <span class="item-tag">Piscine Naturali</span>
+                        <span class="item-tag" data-lang="en">Natural Pools</span>
+                        <span class="item-tag" data-lang="it">Piscine Naturali</span>
+                        <span class="item-tag" data-lang="fr">Piscines naturelles</span>
+                        <span class="item-tag" data-lang="es">Piscinas naturales</span>
                     </div>
-                    <div class="item-desc">Rocce piatte e scese a mare spettacolari con acqua cristallina.</div>
+                    <div class="item-desc" data-lang="en">Flat red rocks and spectacular entries into crystal clear sea water.</div>
+                    <div class="item-desc" data-lang="it">Rocce piatte e scese a mare spettacolari con acqua cristallina.</div>
+                    <div class="item-desc" data-lang="fr">Roches plates et accès à una eau cristalline spectaculaire.</div>
+                    <div class="item-desc" data-lang="es">Rocas planas y espectaculares bajadas al mar con aguas cristalinas.</div>
                     <a href="https://maps.google.com/?q=Le+Sorgenti+Costa+Paradiso" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
@@ -529,167 +731,273 @@
                         <div class="item-title">La Funtanedda</div>
                         <span class="item-tag">La Marinedda</span>
                     </div>
-                    <div class="item-desc">Splendida caletta con rocce modellate dal vento e mare limpido.</div>
+                    <div class="item-desc" data-lang="en">A beautiful cove surrounded by wind-sculpted granite rocks.</div>
+                    <div class="item-desc" data-lang="it">Splendida caletta con rocce modellate dal vento e mare limpido.</div>
+                    <div class="item-desc" data-lang="fr">Superbe crique aux rochers sculptés par le vent.</div>
+                    <div class="item-desc" data-lang="es">Hermosa cala con rocas esculpidas por el viento y aguas transparentes.</div>
                     <a href="https://maps.app.goo.gl/jbXAYRytaq5zuiKG7?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Vignola Mare</div>
-                        <span class="item-tag">Panoramica</span>
+                        <span class="item-tag" data-lang="en">Scenic Watchtower</span>
+                        <span class="item-tag" data-lang="it">Torre Panoramica</span>
+                        <span class="item-tag" data-lang="fr">Tour panoramique</span>
+                        <span class="item-tag" data-lang="es">Torre panorámica</span>
                     </div>
-                    <div class="item-desc">Spiaggia lunghissima e selvaggia dominata da una torre aragonese.</div>
+                    <div class="item-desc" data-lang="en">Long sandy beach dominated by an ancient Spanish watchtower.</div>
+                    <div class="item-desc" data-lang="it">Spiaggia lunghissima e selvaggia dominata da una torre aragonese.</div>
+                    <div class="item-desc" data-lang="fr">Grande plage sauvage dominée par une tour espagnole.</div>
+                    <div class="item-desc" data-lang="es">Playa muy larga y salvaje dominada por una torre española.</div>
                     <a href="https://maps.app.goo.gl/gmjVorkXtDbiaovJ8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Naracu Nieddu</div>
-                        <span class="item-tag">Pineta</span>
+                        <span class="item-tag" data-lang="en">Pine Forest</span>
+                        <span class="item-tag" data-lang="it">Pineta</span>
+                        <span class="item-tag" data-lang="fr">Forêt de pins</span>
+                        <span class="item-tag" data-lang="es">Pinar</span>
                     </div>
-                    <div class="item-desc">Immersa in una fitta pineta, oasi di pace con sabbia finissima.</div>
+                    <div class="item-desc" data-lang="en">A peaceful oasis with fine sand surrounded by a dense pine forest.</div>
+                    <div class="item-desc" data-lang="it">Immersa in una fitta pineta, oasi di pace con sabbia finissima.</div>
+                    <div class="item-desc" data-lang="fr">Entourée d'une forêt de pins, une oasis de paix au sable fin.</div>
+                    <div class="item-desc" data-lang="es">Rodeada de un denso pinar, un oasis de paz con arena finísima.</div>
                     <a href="https://maps.app.goo.gl/8DP91LzJXZjrSydZ8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Rena Majore</div>
-                        <span class="item-tag">Dune</span>
+                        <span class="item-tag" data-lang="en">Sand Dunes</span>
+                        <span class="item-tag" data-lang="it">Dune di Sabbia</span>
+                        <span class="item-tag" data-lang="fr">Dunes de sable</span>
+                        <span class="item-tag" data-lang="es">Dunas de arena</span>
                     </div>
-                    <div class="item-desc">Dune di sabbia bianchissima e mare dalle sfumature caraibiche.</div>
+                    <div class="item-desc" data-lang="en">White sand dunes and turquoise ocean shades reminiscent of the Caribbean.</div>
+                    <div class="item-desc" data-lang="it">Dune di sabbia bianchissima e mare dalle sfumature caraibiche.</div>
+                    <div class="item-desc" data-lang="fr">Dunes de sable blanc et mer aux nuances caraïbes.</div>
+                    <div class="item-desc" data-lang="es">Dunas de arena blanca y mar con matices caribeños.</div>
                     <a href="https://maps.app.goo.gl/NaU7wqNnkAtwniBf9?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Cala Sarraina</div>
-                        <span class="item-tag">15 min auto</span>
+                        <span class="item-tag" data-lang="en">15 min drive</span>
+                        <span class="item-tag" data-lang="it">15 min auto</span>
+                        <span class="item-tag" data-lang="fr">15 min en voiture</span>
+                        <span class="item-tag" data-lang="es">15 min en coche</span>
                     </div>
-                    <div class="item-desc">Baia selvaggia con sabbia fine, chiosco bar e tramonti indimenticabili.</div>
+                    <div class="item-desc" data-lang="en">Wild cove with fine sand, beach bar, and unforgettable sunsets.</div>
+                    <div class="item-desc" data-lang="it">Baia selvaggia con sabbia fine, chiosco bar e tramonti indimenticabili.</div>
+                    <div class="item-desc" data-lang="fr">Crique sauvage au sable fin, bar de plage et couchers de soleil inoubliables.</div>
+                    <div class="item-desc" data-lang="es">Bahía salvaje con arena fina, chiringuito y atardeceres inolvidables.</div>
                     <a href="https://maps.google.com/?q=Cala+Sarraina" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Spiaggia di Li Tinnari</div>
-                        <span class="item-tag">Natura</span>
+                        <span class="item-tag" data-lang="en">Nature</span>
+                        <span class="item-tag" data-lang="it">Natura</span>
+                        <span class="item-tag" data-lang="fr">Nature</span>
+                        <span class="item-tag" data-lang="es">Naturaleza</span>
                     </div>
-                    <div class="item-desc">Spiaggia a forma di cuore fatta di piccoli ciottoli rosa.</div>
+                    <div class="item-desc" data-lang="en">A unique heart-shaped pebble beach surrounded by wild nature.</div>
+                    <div class="item-desc" data-lang="it">Spiaggia a forma di cuore fatta di piccoli ciottoli rosa.</div>
+                    <div class="item-desc" data-lang="fr">Plage en forme de cœur composée de petits galets roses.</div>
+                    <div class="item-desc" data-lang="es">Playa en forma de corazón formada por pequeñas piedras rosa.</div>
                     <a href="https://maps.google.com/?q=Spiaggia+di+Tinnari" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 4: RISTORANTI -->
+        <!-- TAB 4: DINING -->
         <section id="tab-gusto" class="tab-content">
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🍽️</span>
-                    <span>Ristoranti & Drink</span>
+                    <span data-lang="en">Restaurants & Drinks</span>
+                    <span data-lang="it">Ristoranti & Drink</span>
+                    <span data-lang="fr">Restaurants & Bars</span>
+                    <span data-lang="es">Restaurantes y Bares</span>
                 </div>
                 
                 <div class="notice-box">
                     <span>💡</span>
-                    <div><strong>Consiglio:</strong> È fortemente raccomandata la prenotazione in anticipo per tutti i locali!</div>
+                    <div>
+                        <span data-lang="en"><strong>Tip:</strong> Booking in advance is highly recommended for all venues!</span>
+                        <span data-lang="it"><strong>Consiglio:</strong> È fortemente raccomandata la prenotazione in anticipo per tutti i locali!</span>
+                        <span data-lang="fr"><strong>Conseil :</strong> Il est fortement recommandé de réserver à l'avance !</span>
+                        <span data-lang="es"><strong>Consejo:</strong> ¡Se recomienda reservar con antelación en todos los locales!</span>
+                    </div>
                 </div>
 
                 <div class="section-subtitle">
-                    <span>📍</span> <span>A Costa Paradiso</span>
+                    <span>📍</span> 
+                    <span data-lang="en">In Costa Paradiso</span>
+                    <span data-lang="it">A Costa Paradiso</span>
+                    <span data-lang="fr">À Costa Paradiso</span>
+                    <span data-lang="es">En Costa Paradiso</span>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Il Calice d'Oro</div>
-                        <span class="item-tag">Alta Qualità</span>
+                        <span class="item-tag" data-lang="en">Fine Dining</span>
+                        <span class="item-tag" data-lang="it">Alta Qualità</span>
+                        <span class="item-tag" data-lang="fr">Cuisine raffinée</span>
+                        <span class="item-tag" data-lang="es">Alta cocina</span>
                     </div>
-                    <div class="item-desc">Cucina raffinata e piatti eccellenti. Un po' più costoso, ma di alto livello.</div>
+                    <div class="item-desc" data-lang="en">Refined cuisine and high quality dishes. Slightly higher price range, top level.</div>
+                    <div class="item-desc" data-lang="it">Cucina raffinata e piatti eccellenti. Un po' più costoso, ma di alto livello.</div>
+                    <div class="item-desc" data-lang="fr">Cuisine raffinée et plats excellents. Prix plus élevé, mais niveau remarquable.</div>
+                    <div class="item-desc" data-lang="es">Cocina refinada y platos excelentes. Precio más elevado, excelente calidad.</div>
                     <a href="https://goo.gl/maps/mj7JmLwhFRbdEPgW6" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Ristorante Soento</div>
-                        <span class="item-tag">Cucina Locale</span>
+                        <span class="item-tag" data-lang="en">Local Flavors</span>
+                        <span class="item-tag" data-lang="it">Cucina Locale</span>
+                        <span class="item-tag" data-lang="fr">Cuisine locale</span>
+                        <span class="item-tag" data-lang="es">Cocina local</span>
                     </div>
-                    <div class="item-desc">Ottima opzione a Costa Paradiso per gustare specialità locali.</div>
+                    <div class="item-desc" data-lang="en">Great option within Costa Paradiso to enjoy regional specialties.</div>
+                    <div class="item-desc" data-lang="it">Ottima opzione a Costa Paradiso per gustare specialità locali.</div>
+                    <div class="item-desc" data-lang="fr">Excellente option à Costa Paradiso pour déguster des spécialités locales.</div>
+                    <div class="item-desc" data-lang="es">Gran opción en Costa Paradiso para disfrutar de especialidades locales.</div>
                     <a href="https://maps.app.goo.gl/VME91NPJn44tB1fR7?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Maya Restaurant</div>
-                        <span class="item-tag">Colazioni & Aperitivi</span>
+                        <span class="item-tag" data-lang="en">Sunset & Drinks</span>
+                        <span class="item-tag" data-lang="it">Colazioni & Aperitivi</span>
+                        <span class="item-tag" data-lang="fr">Petit déjeuner & Aperitif</span>
+                        <span class="item-tag" data-lang="es">Desayunos y Cócteles</span>
                     </div>
-                    <div class="item-desc">Location stupenda sulle scogliere. Perfetta per colazioni o aperitivi al tramonto.</div>
+                    <div class="item-desc" data-lang="en">Stunning location on cliffs. Perfect for breakfast or sunset aperitifs.</div>
+                    <div class="item-desc" data-lang="it">Location stupenda sulle scogliere. Perfetta per colazioni o aperitivi al tramonto.</div>
+                    <div class="item-desc" data-lang="fr">Emplacement magnifique sur les falaises. Parfait pour le petit-déjeuner ou un verre au coucher du soleil.</div>
+                    <div class="item-desc" data-lang="es">Ubicación espectacular en los acantilados. Ideal para desayunos o cócteles al atardecer.</div>
                     <a href="https://goo.gl/maps/q7zAvJ3GxYcgqaGx6" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="section-subtitle">
-                    <span>🚗</span> <span>Fuori Costa Paradiso</span>
+                    <span>🚗</span> 
+                    <span data-lang="en">Nearby / Surrounding Area</span>
+                    <span data-lang="it">Fuori Costa Paradiso</span>
+                    <span data-lang="fr">Aux alentours</span>
+                    <span data-lang="es">Alrededores</span>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Il Geranio</div>
-                        <span class="item-tag">Tradizione</span>
+                        <span class="item-tag" data-lang="en">Traditional</span>
+                        <span class="item-tag" data-lang="it">Tradizione</span>
+                        <span class="item-tag" data-lang="fr">Traditionnel</span>
+                        <span class="item-tag" data-lang="es">Tradicional</span>
                     </div>
-                    <div class="item-desc">Accogliente ristorante nei dintorni per una piacevole cena fuori zona.</div>
+                    <div class="item-desc" data-lang="en">Cozy restaurant nearby for a pleasant dinner outside the resort.</div>
+                    <div class="item-desc" data-lang="it">Accogliente ristorante nei dintorni per una piacevole cena fuori zona.</div>
+                    <div class="item-desc" data-lang="fr">Restaurant chaleureux dans les environs pour un agréable dîner.</div>
+                    <div class="item-desc" data-lang="es">Acogedor restaurante cercano para una agradable cena fuera.</div>
                     <a href="https://goo.gl/maps/ew6FCuZT2nfMob148" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">La Terrazza sul mare</div>
-                        <span class="item-tag">Pesce alla Griglia</span>
+                        <span class="item-tag" data-lang="en">Grilled Seafood</span>
+                        <span class="item-tag" data-lang="it">Pesce alla Griglia</span>
+                        <span class="item-tag" data-lang="fr">Poissons grillés</span>
+                        <span class="item-tag" data-lang="es">Pescado a la parrilla</span>
                     </div>
-                    <div class="item-desc">Grigliate di pesce fantastiche ed un tramonto mozzafiato.</div>
+                    <div class="item-desc" data-lang="en">Fantastic grilled fish and breathtaking sea sunsets.</div>
+                    <div class="item-desc" data-lang="it">Grigliate di pesce fantastiche ed un tramonto mozzafiato.</div>
+                    <div class="item-desc" data-lang="fr">Poissons grillés fantastiques et coucher de soleil à couper le souffle.</div>
+                    <div class="item-desc" data-lang="es">Pescado a la parrilla fantástico y un atardecer impresionante.</div>
                     <a href="https://goo.gl/maps/ZZC2MgfUyV3LXP5z9" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Agriturismo Tuttusoni</div>
-                        <span class="item-tag">Tipico Sardo</span>
+                        <span class="item-tag" data-lang="en">Sardinian Agriturismo</span>
+                        <span class="item-tag" data-lang="it">Tipico Sardo</span>
+                        <span class="item-tag" data-lang="fr">Auberge typique</span>
+                        <span class="item-tag" data-lang="es">Agriturismo típico</span>
                     </div>
-                    <div class="item-desc">Autentica cucina tipica sarda (nota: non ha vista mare).</div>
+                    <div class="item-desc" data-lang="en">Authentic traditional Sardinian menu fixed price dinner (note: no sea view).</div>
+                    <div class="item-desc" data-lang="it">Autentica cucina tipica sarda (nota: non ha vista mare).</div>
+                    <div class="item-desc" data-lang="fr">Cuisine sarde authentique (remarque : pas de vue sur la mer).</div>
+                    <div class="item-desc" data-lang="es">Auténtica comida tradicional sarda (nota: no tiene vistas al mar).</div>
                     <a href="https://goo.gl/maps/rTv3Wftud1zf4d3K9" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Agriturismo Santu Petru</div>
-                        <span class="item-tag">Tipico + Vista Mare</span>
+                        <span class="item-tag" data-lang="en">Agriturismo + Sea View</span>
+                        <span class="item-tag" data-lang="it">Tipico + Vista Mare</span>
+                        <span class="item-tag" data-lang="fr">Typique + Vue mer</span>
+                        <span class="item-tag" data-lang="es">Típico + Vistas al mar</span>
                     </div>
-                    <div class="item-desc">Cucina tradizionale sarda con bellissima vista mare.</div>
+                    <div class="item-desc" data-lang="en">Traditional Sardinian cuisine combined with beautiful sea views.</div>
+                    <div class="item-desc" data-lang="it">Cucina tradizionale sarda con bellissima vista mare.</div>
+                    <div class="item-desc" data-lang="fr">Cuisine traditionnelle sarde avec une vue magnifique sur la mer.</div>
+                    <div class="item-desc" data-lang="es">Cocina tradicional sarda con preciosas vistas al mar.</div>
                     <a href="https://goo.gl/maps/38ueoYo44yCJywhi7" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Almadia Restaurant</div>
-                        <span class="item-tag">Gourmet & Vista</span>
+                        <span class="item-tag" data-lang="en">Gourmet & View</span>
+                        <span class="item-tag" data-lang="it">Gourmet & Vista</span>
+                        <span class="item-tag" data-lang="fr">Gourmet & Vue</span>
+                        <span class="item-tag" data-lang="es">Gourmet y Vistas</span>
                     </div>
-                    <div class="item-desc">Ambiente curato, cibo squisito e bellissima atmosfera.</div>
+                    <div class="item-desc" data-lang="en">Elegant environment, delicious food, and wonderful atmosphere.</div>
+                    <div class="item-desc" data-lang="it">Ambiente curato, cibo squisito e bellissima atmosfera.</div>
+                    <div class="item-desc" data-lang="fr">Cadre soigné, nourriture délicieuse et superbe atmosphère.</div>
+                    <div class="item-desc" data-lang="es">Ambiente cuidado, comida deliciosa y excelente atmósfera.</div>
                     <a href="https://maps.app.goo.gl/njpup4e7xbreF2bb7?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
 
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">Jatika</div>
-                        <span class="item-tag">Lounge & Food</span>
+                        <span class="item-tag" data-lang="en">Lounge & Food</span>
+                        <span class="item-tag" data-lang="it">Lounge & Food</span>
+                        <span class="item-tag" data-lang="fr">Lounge & Food</span>
+                        <span class="item-tag" data-lang="es">Lounge y Comida</span>
                     </div>
-                    <div class="item-desc">Ottima scelta nei dintorni per una cena con eccellente atmosfera.</div>
+                    <div class="item-desc" data-lang="en">Excellent choice nearby for dinner with high quality food and great vibe.</div>
+                    <div class="item-desc" data-lang="it">Ottima scelta nei dintorni per una cena con eccellente atmosfera.</div>
+                    <div class="item-desc" data-lang="fr">Très bon choix dans les environs pour un dîner avec une excellente ambiance.</div>
+                    <div class="item-desc" data-lang="es">Excelente opción en las cercanías para una cena con gran ambiente.</div>
                     <a href="https://maps.app.goo.gl/ykxa4ydcBKx3QjsX6?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 5: ESCURSIONI -->
+        <!-- TAB 5: EXCURSIONS -->
         <section id="tab-escursioni" class="tab-content">
             <div class="card">
                 <div class="card-title">
                     <span class="icon">⛵</span>
-                    <span>Escursioni & Esperienze</span>
+                    <span data-lang="en">Tours & Experiences</span>
+                    <span data-lang="it">Escursioni & Esperienze</span>
+                    <span data-lang="fr">Excursions & Expériences</span>
+                    <span data-lang="es">Excursiones y Experiencias</span>
                 </div>
 
                 <!-- Kayak Adventure -->
@@ -698,83 +1006,198 @@
                         <div class="item-title">🚣 Kayak Rental</div>
                         <span class="item-tag">2-Seater Adventure</span>
                     </div>
-                    <div class="item-desc">
-                        Looking for something a bit more active on the water? Here's a great option for a fun and memorable experience! 🌊☀️
+                    
+                    <!-- EN -->
+                    <div data-lang="en">
+                        <div class="item-desc">Looking for something a bit more active on the water? Here's a great option for a fun and memorable experience! 🌊☀️</div>
+                        <div class="tip-box">
+                            <strong>You can rent a 2-person kayak at either of these two beaches nearby:</strong><br><br>
+                            • 🏖️ <strong>Vignola Mare Beach:</strong> Paddle out and enjoy a stunning view of the Spanish watchtower rising above the turquoise sea below.<br><br>
+                            • 🏖️ <strong>Cala Sarraina Beach:</strong> Head out a little further and paddle around the impressive rock formation just offshore.<br><br>
+                            ☀️ <i>No experience needed for a relaxed paddle — just take it easy, enjoy the scenery, and don't forget sunscreen!</i>
+                        </div>
                     </div>
-                    <div class="tip-box">
-                        <strong>You can rent a 2-person kayak at either of these two beaches nearby:</strong><br><br>
-                        • 🏖️ <strong>Vignola Mare Beach:</strong> Paddle out and enjoy a stunning view of the Spanish watchtower rising above the turquoise sea below.<br><br>
-                        • 🏖️ <strong>Cala Sarraina Beach:</strong> Head out a little further and paddle around the impressive rock formation just offshore.<br><br>
-                        ☀️ <i>No experience needed for a relaxed paddle — just take it easy, enjoy the scenery, and don't forget sunscreen!</i>
+
+                    <!-- IT -->
+                    <div data-lang="it">
+                        <div class="item-desc">Cerchi qualcosa di più attivo in acqua? Ecco un'ottima opzione per un'esperienza divertente e memorabile! 🌊☀️</div>
+                        <div class="tip-box">
+                            <strong>Puoi noleggiare un kayak biposto in due spiagge vicine:</strong><br><br>
+                            • 🏖️ <strong>Spiaggia di Vignola Mare:</strong> Pagaia e goditi una vista mozzafiato sulla torre aragonese.<br><br>
+                            • 🏖️ <strong>Spiaggia di Cala Sarraina:</strong> Pagaia attorno alle imponenti formazioni rocciose al largo.<br><br>
+                            ☀️ <i>Nessuna esperienza richiesta per una pagaiata rilassante — goditi il panorama e non dimenticare la crema solare!</i>
+                        </div>
+                    </div>
+
+                    <!-- FR -->
+                    <div data-lang="fr">
+                        <div class="item-desc">Envie d'une activité sur l'eau ? Voici une excellente option pour un moment mémorable ! 🌊☀️</div>
+                        <div class="tip-box">
+                            <strong>Vous pouvez louer un kayak biplace sur ces deux plages à proximité :</strong><br><br>
+                            • 🏖️ <strong>Plage de Vignola Mare :</strong> Pédalez et admirez la vue imprenable sur la tour espagnole au-dessus de la mer turquoise.<br><br>
+                            • 🏖️ <strong>Plage de Cala Sarraina :</strong> Faites le tour des impressionnantes formations rocheuses en mer.<br><br>
+                            ☀️ <i>Aucune expérience requise — profitez du paysage et n'oubliez pas la crème solaire !</i>
+                        </div>
+                    </div>
+
+                    <!-- ES -->
+                    <div data-lang="es">
+                        <div class="item-desc">¿Busca algo más activo en el agua? ¡Una excelente opción para una experiencia inolvidable! 🌊☀️</div>
+                        <div class="tip-box">
+                            <strong>Puede alquilar un kayak para 2 personas en estas dos playas cercanas:</strong><br><br>
+                            • 🏖️ <strong>Playa de Vignola Mare:</strong> Reme y disfrute de una vista impresionante de la torre española sobre el mar turquesa.<br><br>
+                            • 🏖️ <strong>Playa de Cala Sarraina:</strong> Reme alrededor de las impresionantes formaciones rocosas frente a la costa.<br><br>
+                            ☀️ <i>No se requiere experiencia previa — ¡disfrute del paisaje y no olvide el protector solar!</i>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Ulivi Millenari -->
+                <!-- Millenary Olive Trees of Luras -->
                 <div class="item-card">
                     <div class="item-header">
                         <div class="item-title">🌳 Millenary Olive Trees of Luras</div>
-                        <span class="item-tag">Inland Experience</span>
+                        <span class="item-tag" data-lang="en">Inland Treasure</span>
+                        <span class="item-tag" data-lang="it">Tesoro dell'Entroterra</span>
+                        <span class="item-tag" data-lang="fr">Trésor de l'intérieur</span>
+                        <span class="item-tag" data-lang="es">Tesoros del interior</span>
                     </div>
-                    <div class="item-desc">
-                        About 1 hour's drive inland from Costa Paradiso, you'll find one of Sardinia's most extraordinary natural treasures: a grove of ancient olive trees (olivastri) estimated to be over 4,000 years old. ⏳
+
+                    <!-- EN -->
+                    <div data-lang="en">
+                        <div class="item-desc">About 1 hour drive inland, you'll find one of Sardinia's most extraordinary natural treasures: ancient olive trees estimated to be over 4,000 years old. ⏳</div>
+                        <div class="tip-box">🏛️ <i>Yes — 4,000 years old. These trees were already ancient when the Romans arrived. A truly humbling encounter with nature and history.</i></div>
                     </div>
-                    <div class="tip-box">
-                        🏛️ <i>Yes — 4,000 years. These trees were already old when the Romans arrived. A short but impressive detour, totally worth it!</i>
+
+                    <!-- IT -->
+                    <div data-lang="it">
+                        <div class="item-desc">A circa 1 ora di auto nell'entroterra, troverai uno dei tesori naturali più straordinari della Sardegna: ulivi millenari stimati oltre 4.000 anni. ⏳</div>
+                        <div class="tip-box">🏛️ <i>Sì — 4.000 anni. Questi alberi erano già secolari quando arrivarono i Romani. Una deviazione imperdibile!</i></div>
                     </div>
+
+                    <!-- FR -->
+                    <div data-lang="fr">
+                        <div class="item-desc">À environ 1 heure de route dans les terres, découvrez des oliviers millénaires estimés à plus de 4 000 ans. ⏳</div>
+                        <div class="tip-box">🏛️ <i>Oui — 4 000 ans. Ces arbres étaient déjà très anciens quand les Romains sont arrivés. Une rencontre fascinante avec la nature.</i></div>
+                    </div>
+
+                    <!-- ES -->
+                    <div data-lang="es">
+                        <div class="item-desc">A aproximadamente 1 hora en coche hacia el interior, encontrará olivos milenarios con más de 4.000 años de antigüedad. ⏳</div>
+                        <div class="tip-box">🏛️ <i>Sí — 4.000 años. Estos árboles ya eran viejos cuando llegaron los romanos. Una visita totalmente recomendada.</i></div>
+                    </div>
+
                     <div style="margin-top: 8px;">
                         <a href="https://maps.app.goo.gl/sPtFgM57qpgH4aHy6" target="_blank" rel="noopener noreferrer" class="btn-map-inline">📍 Google Maps →</a>
-                        <a href="https://olivastrimillenariluras.it/" target="_blank" rel="noopener noreferrer" class="btn-map-inline">🌐 Book Online →</a>
+                        <a href="https://olivastrimillenariluras.it/" target="_blank" rel="noopener noreferrer" class="btn-map-inline">🌐
+                            <span data-lang="en">Book Online →</span>
+                            <span data-lang="it">Prenota Online →</span>
+                            <span data-lang="fr">Réserver en ligne →</span>
+                            <span data-lang="es">Reservar en línea →</span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Barca a Vela -->
+                <!-- Sailing Boat -->
                 <div class="item-card">
                     <div class="item-header">
-                        <div class="item-title">Barca a Vela • Athena Sail</div>
+                        <div class="item-title">⛵ Sailing Boat • Athena Sail</div>
                         <span class="item-tag">La Maddalena</span>
                     </div>
-                    <div class="item-desc">
-                        Esplora il parco de La Maddalena in barca a vela (12m). Partenze da Palau (~1h da Costa Paradiso).
+
+                    <div data-lang="en">
+                        <div class="item-desc">Explore the La Maddalena archipelago on a 12m sailboat. Departures from Palau (~1h drive from Costa Paradiso).</div>
+                        <div class="tip-box">
+                            <strong>Available tours:</strong><br>
+                            • 🌅 Sunset trip<br>
+                            • 🌤️ Half day (morning/afternoon)<br>
+                            • ☀️ Full day with swimming stops
+                        </div>
                     </div>
-                    <div class="tip-box">
-                        <strong>Tour disponibili:</strong><br>
-                        • 🌅 Sunset trip (uscita serale)<br>
-                        • 🌤️ Mezza giornata (mattina/pomeriggio)<br>
-                        • ☀️ Giornata intera con soste bagno
+
+                    <div data-lang="it">
+                        <div class="item-desc">Esplora il parco de La Maddalena in barca a vela (12m). Partenze da Palau (~1h da Costa Paradiso).</div>
+                        <div class="tip-box">
+                            <strong>Tour disponibili:</strong><br>
+                            • 🌅 Sunset trip (uscita serale)<br>
+                            • 🌤️ Mezza giornata<br>
+                            • ☀️ Giornata intera con soste bagno
+                        </div>
                     </div>
-                    <a href="https://www.athenasail.com/" target="_blank" rel="noopener noreferrer" class="btn-map">🌐 Prenota su AthenaSail.com →</a>
+
+                    <div data-lang="fr">
+                        <div class="item-desc">Explorez l'archipel de La Maddalena en voilier de 12m. Départs de Palau (~1h en voiture).</div>
+                        <div class="tip-box">
+                            <strong>Excursions disponibles :</strong><br>
+                            • 🌅 Coucher de soleil<br>
+                            • 🌤️ Demi-journée<br>
+                            • ☀️ Journée complète avec baignade
+                        </div>
+                    </div>
+
+                    <div data-lang="es">
+                        <div class="item-desc">Explore el archipiélago de La Maddalena en un velero de 12m. Salidas desde Palau (~1h en coche).</div>
+                        <div class="tip-box">
+                            <strong>Tours disponibles:</strong><br>
+                            • 🌅 Excursión al atardecer<br>
+                            • 🌤️ Medio día<br>
+                            • ☀️ Día completo con paradas para nadar
+                        </div>
+                    </div>
+
+                    <a href="https://www.athenasail.com/" target="_blank" rel="noopener noreferrer" class="btn-map">🌐 AthenaSail.com →</a>
                 </div>
 
                 <!-- Asinara 4x4 -->
                 <div class="item-card">
                     <div class="item-header">
-                        <div class="item-title">Isola dell'Asinara 4x4</div>
-                        <span class="item-tag">Tour Naturalistico</span>
+                        <div class="item-title">🚙 Asinara Island 4x4 Tour</div>
+                        <span class="item-tag" data-lang="en">National Park</span>
+                        <span class="item-tag" data-lang="it">Parco Nazionale</span>
+                        <span class="item-tag" data-lang="fr">Parc National</span>
+                        <span class="item-tag" data-lang="es">Parque Nacional</span>
                     </div>
-                    <div class="item-desc">
-                        Tour in fuoristrada nel Parco Nazionale dell'Asinara alla scoperta degli asinelli bianchi e dell'ex carcere.
+
+                    <div data-lang="en">
+                        <div class="item-desc">Off-road jeep tour in Asinara National Park to discover the famous white donkeys and historic sights.</div>
+                        <div class="tip-box">🚗 <strong>Route:</strong> ~1 hour drive to Stintino, then a short 20-minute ferry ride.</div>
                     </div>
-                    <div class="tip-box">
-                        🚗 <strong>Percorso:</strong> 1h di auto fino a Stintino, poi 20 min di traghetto.
+
+                    <div data-lang="it">
+                        <div class="item-desc">Tour in fuoristrada nel Parco Nazionale dell'Asinara alla scoperta degli asinelli bianchi.</div>
+                        <div class="tip-box">🚗 <strong>Percorso:</strong> 1h di auto fino a Stintino, poi 20 min di traghetto.</div>
                     </div>
-                    <a href="https://www.asinara4x4.com/" target="_blank" rel="noopener noreferrer" class="btn-map">🌐 Prenota su Asinara4x4.com →</a>
+
+                    <div data-lang="fr">
+                        <div class="item-desc">Circuit en 4x4 dans le parc national de l'Asinara à la découverte des célèbres ânes blancs.</div>
+                        <div class="tip-box">🚗 <strong>Trajet :</strong> 1h de route jusqu'à Stintino, puis 20 min de ferry.</div>
+                    </div>
+
+                    <div data-lang="es">
+                        <div class="item-desc">Excursión en 4x4 por el Parque Nacional de Asinara para descubrir los famosos asnos blancos.</div>
+                        <div class="tip-box">🚗 <strong>Ruta:</strong> 1h en coche hasta Stintino, luego 20 min en ferri.</div>
+                    </div>
+
+                    <a href="https://www.asinara4x4.com/" target="_blank" rel="noopener noreferrer" class="btn-map">🌐 Asinara4x4.com →</a>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 6: CONTATTI -->
+        <!-- TAB 6: CONTACTS -->
         <section id="tab-contatti" class="tab-content">
             <div class="card">
                 <div class="card-title">
                     <span class="icon">📞</span>
-                    <span>Contatti Proprietari & Assistenza</span>
+                    <span data-lang="en">Contacts & Assistance</span>
+                    <span data-lang="it">Contatti Proprietari & Assistenza</span>
+                    <span data-lang="fr">Contacts & Assistance</span>
+                    <span data-lang="es">Contactos y Asistencia</span>
                 </div>
 
                 <a href="https://wa.me/393240909098" class="contact-btn" target="_blank">
                     <div class="left">
                         <div class="icon-circle icon-wa">💬</div>
                         <div>
-                            <div>Assistenza Check-in (WhatsApp)</div>
+                            <div>Check-in Support (WhatsApp)</div>
                             <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">+39 324 0909098</div>
                         </div>
                     </div>
@@ -785,7 +1208,10 @@
                     <div class="left">
                         <div class="icon-circle icon-phone">📞</div>
                         <div>
-                            <div>Assistenza Check-in (Chiamata)</div>
+                            <div data-lang="en">Check-in Support (Call)</div>
+                            <div data-lang="it">Assistenza Check-in (Chiamata)</div>
+                            <div data-lang="fr">Assistance Check-in (Appel)</div>
+                            <div data-lang="es">Asistencia Check-in (Llamada)</div>
                             <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">+39 348 9693508</div>
                         </div>
                     </div>
@@ -796,18 +1222,24 @@
                     <div class="left">
                         <div class="icon-circle icon-phone">📞</div>
                         <div>
-                            <div>Chiamata Diretta</div>
+                            <div data-lang="en">Direct Phone Call</div>
+                            <div data-lang="it">Chiamata Diretta</div>
+                            <div data-lang="fr">Appel direct</div>
+                            <div data-lang="es">Llamada directa</div>
                             <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">+39 346 5773806</div>
                         </div>
                     </div>
                     <span>→</span>
                 </a>
 
-                <a href="https://wa.me/393331234567?text=Ciao%20Stefi%20e%20Anto" class="contact-btn" target="_blank">
+                <a href="https://wa.me/393331234567?text=Hello%20Stefi%20and%20Anto" class="contact-btn" target="_blank">
                     <div class="left">
                         <div class="icon-circle icon-wa">💬</div>
                         <div>
-                            <div>Proprietari (WhatsApp)</div>
+                            <div data-lang="en">Owners (WhatsApp)</div>
+                            <div data-lang="it">Proprietari (WhatsApp)</div>
+                            <div data-lang="fr">Propriétaires (WhatsApp)</div>
+                            <div data-lang="es">Propietarios (WhatsApp)</div>
                             <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">Stefi & Anto</div>
                         </div>
                     </div>
@@ -820,8 +1252,11 @@
                     <div class="left">
                         <div class="icon-circle icon-emergency">🚨</div>
                         <div>
-                            <div style="color: #991B1B;">Emergenze</div>
-                            <div style="font-size: 0.78rem; font-weight: normal; color: #B91C1C;">Chiamare 112</div>
+                            <div style="color: #991B1B;" data-lang="en">Emergency Number</div>
+                            <div style="color: #991B1B;" data-lang="it">Emergenze</div>
+                            <div style="color: #991B1B;" data-lang="fr">Urgences</div>
+                            <div style="color: #991B1B;" data-lang="es">Emergencias</div>
+                            <div style="font-size: 0.78rem; font-weight: normal; color: #B91C1C;">Call / Chiamare 112</div>
                         </div>
                     </div>
                     <span>→</span>
@@ -830,11 +1265,14 @@
         </section>
     </main>
 
-    <!-- Bottom Navigation Bar (Inizia attiva su Villa) -->
+    <!-- Bottom Navigation Bar -->
     <nav class="bottom-nav">
         <button type="button" class="nav-item active" onclick="switchTab('casa', this)">
             <span class="nav-icon">🏡</span>
-            <span>Villa</span>
+            <span data-lang="en">Villa</span>
+            <span data-lang="it">Villa</span>
+            <span data-lang="fr">Villa</span>
+            <span data-lang="es">Villa</span>
         </button>
         <button type="button" class="nav-item" onclick="switchTab('checkin', this)">
             <span class="nav-icon">🔑</span>
@@ -842,23 +1280,47 @@
         </button>
         <button type="button" class="nav-item" onclick="switchTab('spiagge', this)">
             <span class="nav-icon">🏖️</span>
-            <span>Spiagge</span>
+            <span data-lang="en">Beaches</span>
+            <span data-lang="it">Spiagge</span>
+            <span data-lang="fr">Plages</span>
+            <span data-lang="es">Playas</span>
         </button>
         <button type="button" class="nav-item" onclick="switchTab('gusto', this)">
             <span class="nav-icon">🍽️</span>
-            <span>Ristoranti</span>
+            <span data-lang="en">Dining</span>
+            <span data-lang="it">Ristoranti</span>
+            <span data-lang="fr">Restos</span>
+            <span data-lang="es">Restaurantes</span>
         </button>
         <button type="button" class="nav-item" onclick="switchTab('escursioni', this)">
             <span class="nav-icon">⛵</span>
-            <span>Escursioni</span>
+            <span data-lang="en">Tours</span>
+            <span data-lang="it">Escursioni</span>
+            <span data-lang="fr">Excursions</span>
+            <span data-lang="es">Tours</span>
         </button>
         <button type="button" class="nav-item" onclick="switchTab('contatti', this)">
             <span class="nav-icon">📞</span>
-            <span>Contatti</span>
+            <span data-lang="en">Contacts</span>
+            <span data-lang="it">Contatti</span>
+            <span data-lang="fr">Contacts</span>
+            <span data-lang="es">Contactos</span>
         </button>
     </nav>
 
     <script>
+        function setLanguage(lang) {
+            document.body.className = 'lang-' + lang;
+            
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            const targetBtn = Array.from(buttons).find(b => b.innerText.toLowerCase().includes(lang));
+            if (targetBtn) targetBtn.classList.add('active');
+
+            localStorage.setItem('preferred_lang', lang);
+        }
+
         function switchTab(tabId, btn) {
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => tab.classList.remove('active'));
@@ -875,19 +1337,29 @@
 
         function copyWifi() {
             const passText = document.getElementById('wifi-pass').innerText;
+            const currentLang = document.body.className.replace('lang-', '') || 'en';
             
+            const messages = {
+                en: '✅ Wi-Fi password copied to clipboard!',
+                it: '✅ Password Wi-Fi copiata negli appunti!',
+                fr: '✅ Mot de passe Wi-Fi copié !',
+                es: '✅ ¡Contraseña Wi-Fi copiada!'
+            };
+
+            const msg = messages[currentLang] || messages.en;
+
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(passText).then(() => {
-                    alert('✅ Password Wi-Fi copiata con successo!');
+                    alert(msg);
                 }).catch(() => {
-                    fallbackCopy(passText);
+                    fallbackCopy(passText, msg);
                 });
             } else {
-                fallbackCopy(passText);
+                fallbackCopy(passText, msg);
             }
         }
 
-        function fallbackCopy(text) {
+        function fallbackCopy(text, msg) {
             const textArea = document.createElement("textarea");
             textArea.value = text;
             textArea.style.top = "0";
@@ -899,19 +1371,20 @@
             try {
                 const successful = document.execCommand('copy');
                 if(successful) {
-                    alert('✅ Password Wi-Fi copiata con successo!');
+                    alert(msg);
                 } else {
-                    alert('Password Wi-Fi: ' + text + '\n(Seleziona e copia manualmente)');
+                    alert('Password: ' + text);
                 }
             } catch (err) {
-                alert('Password Wi-Fi: ' + text + '\n(Seleziona e copia manualmente)');
+                alert('Password: ' + text);
             }
             document.body.removeChild(textArea);
         }
+
+        // Restore saved language or default to English
+        const savedLang = localStorage.getItem('preferred_lang') || 'en';
+        setLanguage(savedLang);
     </script>
 </body>
 </html>
 
-
-
-        
