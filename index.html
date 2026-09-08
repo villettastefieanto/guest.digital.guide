@@ -21,6 +21,7 @@
             --border: #E2E8F0;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
             --radius-lg: 16px;
             --radius-md: 12px;
             --radius-sm: 8px;
@@ -37,11 +38,118 @@
         body {
             background-color: var(--bg-body);
             color: var(--text-main);
-            padding-bottom: calc(90px + env(safe-area-inset-bottom));
+            padding-bottom: 40px;
             line-height: 1.5;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* FLOATING HAMBURGER BUTTON */
+        .hamburger-btn {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .hamburger-btn:active {
+            transform: scale(0.92);
+        }
+
+        /* OVERLAY MENU */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .menu-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-links {
+            list-style: none;
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .menu-links li {
+            margin-bottom: 12px;
+        }
+
+        .menu-link-btn {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            font-size: 1.05rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .menu-link-btn:active, .menu-link-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: scale(0.98);
+        }
+
+        .menu-link-btn .icon {
+            font-size: 1.2rem;
         }
 
         /* Language Switcher Bar */
@@ -301,42 +409,6 @@
         .icon-phone { background: #0284C7; color: white; }
         .icon-emergency { background: #EF4444; color: white; }
 
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            -webkit-backdrop-filter: blur(12px);
-            backdrop-filter: blur(12px);
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-around;
-            padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0;
-            z-index: 1000;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 0.65rem;
-            font-weight: 600;
-            cursor: pointer;
-            flex: 1;
-            padding: 4px 0;
-            transition: color 0.2s;
-        }
-
-        .nav-item .nav-icon { font-size: 1.2rem; margin-bottom: 2px; display: block; }
-        .nav-item.active { color: var(--primary); }
-
         .notice-box {
             background: #FFFBEB;
             border: 1px solid #FDE68A;
@@ -377,6 +449,69 @@
     </style>
 </head>
 <body class="lang-en">
+
+    <!-- FLOATING HAMBURGER BUTTON -->
+    <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Open Menu">
+        ☰
+    </button>
+
+    <!-- FULLSCREEN OVERLAY MENU -->
+    <div class="menu-overlay" id="menuOverlay">
+        <button class="menu-close-btn" onclick="toggleMenu()" aria-label="Close Menu">✕</button>
+        <ul class="menu-links">
+            <li>
+                <button type="button" class="menu-link-btn active" onclick="switchTab('casa', this)">
+                    <span class="icon">🏡</span>
+                    <span data-lang="en">Villa Info</span>
+                    <span data-lang="it">Info Villa</span>
+                    <span data-lang="fr">Info Villa</span>
+                    <span data-lang="es">Info Villa</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="menu-link-btn" onclick="switchTab('checkin', this)">
+                    <span class="icon">🔑</span>
+                    <span>Check-in</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="menu-link-btn" onclick="switchTab('spiagge', this)">
+                    <span class="icon">🏖️</span>
+                    <span data-lang="en">Beaches & Coves</span>
+                    <span data-lang="it">Spiagge & Calette</span>
+                    <span data-lang="fr">Plages & Criques</span>
+                    <span data-lang="es">Playas y Calas</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="menu-link-btn" onclick="switchTab('gusto', this)">
+                    <span class="icon">🍽️</span>
+                    <span data-lang="en">Dining & Drinks</span>
+                    <span data-lang="it">Ristoranti & Drink</span>
+                    <span data-lang="fr">Restaurants & Bars</span>
+                    <span data-lang="es">Restaurantes y Bares</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="menu-link-btn" onclick="switchTab('escursioni', this)">
+                    <span class="icon">⛵</span>
+                    <span data-lang="en">Experience & Tours</span>
+                    <span data-lang="it">Esperienze & Escursioni</span>
+                    <span data-lang="fr">Expériences & Excursions</span>
+                    <span data-lang="es">Experiencias y Excursiones</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="menu-link-btn" onclick="switchTab('contatti', this)">
+                    <span class="icon">📞</span>
+                    <span data-lang="en">Contacts & Assistance</span>
+                    <span data-lang="it">Contatti & Assistenza</span>
+                    <span data-lang="fr">Contacts & Assistance</span>
+                    <span data-lang="es">Contactos y Asistencia</span>
+                </button>
+            </li>
+        </ul>
+    </div>
 
     <header class="hero">
         <div class="lang-picker">
@@ -561,7 +696,7 @@
                     <span data-lang="en"><strong>⚠️ Important:</strong> Check-in does <strong>NOT</strong> take place directly at the property. Please make sure to go to the reception office first.</span>
                     <span data-lang="it"><strong>⚠️ Importante:</strong> Il check-in <strong>NON</strong> avviene direttamente in struttura. Recarsi prima all'ufficio reception.</span>
                     <span data-lang="fr"><strong>⚠️ Important :</strong> Le check-in ne se fait <strong>PAS</strong> directement au logement. Rendez-vous d'abord à la réception.</span>
-                    <span data-lang="es"><strong>⚠️ Importante:</strong> El check-in <strong>NO</strong> se realiza directamente en la propiedad. Diríjase primero a la recepción.</span>
+                    <span data-lang="es"><strong>⚠️ Important:</strong> El check-in <strong>NO</strong> se realiza directamente en la propiedad. Diríjase primero a la recepción.</span>
                 </div>
 
                 <p style="font-size: 0.95rem; margin-bottom: 10px;">
@@ -685,7 +820,7 @@
             </div>
         </section>
 
-                <!-- TAB 3: BEACHES -->
+        <!-- TAB 3: BEACHES -->
         <section id="tab-spiagge" class="tab-content">
             <div class="card">
                 <div class="card-title">
@@ -974,15 +1109,107 @@
             </div>
         </section>
 
-        <!-- TAB 5: EXCURSIONS -->
+        <!-- TAB 5: EXPERIENCE -->
         <section id="tab-escursioni" class="tab-content">
             <div class="card">
                 <div class="card-title">
                     <span class="icon">⛵</span>
-                    <span data-lang="en">Tours & Experiences</span>
-                    <span data-lang="it">Escursioni & Esperienze</span>
-                    <span data-lang="fr">Excursions & Expériences</span>
-                    <span data-lang="es">Excursiones y Experiencias</span>
+                    <span data-lang="en">Experience & Tours</span>
+                    <span data-lang="it">Esperienze & Escursioni</span>
+                    <span data-lang="fr">Expériences & Excursions</span>
+                    <span data-lang="es">Experiencias y Excursiones</span>
+                </div>
+
+                <!-- Water Sports Vignola -->
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">🏄 Water Sports • Vignolasports</div>
+                        <span class="item-tag">Vignola Mare</span>
+                    </div>
+
+                    <div data-lang="en">
+                        <div class="item-desc">Try windsurfing, kitesurfing, or wingfoiling at Vignolasports Water Sport Center in Vignola Mare! 🏄‍♂️💨</div>
+                        <div class="tip-box">
+                            <strong>Activities & Services:</strong><br>
+                            • 🪁 Windsurf, Kitesurf & Wingfoil lessons or rental<br>
+                            • 🌊 Ideal spot for beginners and experienced surfers alike
+                        </div>
+                    </div>
+
+                    <div data-lang="it">
+                        <div class="item-desc">Pratica windsurf, kitesurf o wingfoil a Vignola Mare presso il centro Vignolasports! 🏄‍♂️💨</div>
+                        <div class="tip-box">
+                            <strong>Attività e Servizi:</strong><br>
+                            • 🪁 Corsi e noleggio di Windsurf, Kitesurf e Wingfoil<br>
+                            • 🌊 Spot ideale sia per principianti che per esperti
+                        </div>
+                    </div>
+
+                    <div data-lang="fr">
+                        <div class="item-desc">Pratiquez le windsurf, le kitesurf ou le wingfoil à Vignola Mare chez Vignolasports ! 🏄‍♂️💨</div>
+                        <div class="tip-box">
+                            <strong>Activités & Services :</strong><br>
+                            • 🪁 Cours et location de Windsurf, Kitesurf et Wingfoil<br>
+                            • 🌊 Spot idéal pour débutants et experts
+                        </div>
+                    </div>
+
+                    <div data-lang="es">
+                        <div class="item-desc">¡Prueba el windsurf, kitesurf o wingfoil en Vignola Mare con Vignolasports! 🏄‍♂️💨</div>
+                        <div class="tip-box">
+                            <strong>Actividades y Servicios:</strong><br>
+                            • 🪁 Cursos y alquiler de Windsurf, Kitesurf y Wingfoil<br>
+                            • 🌊 Lugar ideal tanto para principiantes como para expertos
+                        </div>
+                    </div>
+
+                    <a href="https://www.vignolasports.it" target="_blank" rel="noopener noreferrer" class="btn-map">🌐 VignolaSports.it →</a>
+                </div>
+
+                <!-- Surf La Marinedda -->
+                <div class="item-card">
+                    <div class="item-header">
+                        <div class="item-title">🏄‍♂️ Surf • La Marinedda</div>
+                        <span class="item-tag">Isola Rossa</span>
+                    </div>
+
+                    <div data-lang="en">
+                        <div class="item-desc">Ride the waves at La Marinedda beach in Isola Rossa, one of the most famous surf spots in Sardinia. 🌊🏄</div>
+                        <div class="tip-box">
+                            <strong>Highlights:</strong><br>
+                            • 🏄 Surf lessons and equipment rental on site<br>
+                            • 🏖️ Beautiful bay with iconic waves and sunset vibes
+                        </div>
+                    </div>
+
+                    <div data-lang="it">
+                        <div class="item-desc">Cavalca le onde nella splendida spiaggia della Marinedda a Isola Rossa, uno dei punti di riferimento per il surf in Sardegna. 🌊🏄</div>
+                        <div class="tip-box">
+                            <strong>In evidenza:</strong><br>
+                            • 🏄 Lezioni di surf e noleggio attrezzatura in spiaggia<br>
+                            • 🏖️ Baia spettacolare famosa per le sue onde e i fantastici tramonti
+                        </div>
+                    </div>
+
+                    <div data-lang="fr">
+                        <div class="item-desc">Surfez sur le spot de la plage de La Marinedda à Isola Rossa, l'un des spots de surf les plus célèbres de Sardaigne. 🌊🏄</div>
+                        <div class="tip-box">
+                            <strong>Points forts :</strong><br>
+                            • 🏄 Cours de surf et location di matériel sur place<br>
+                            • 🏖️ Superbe baie réputée pour ses vagues et ses couchers de soleil
+                        </div>
+                    </div>
+
+                    <div data-lang="es">
+                        <div class="item-desc">Disfrute del surf en la playa de La Marinedda en Isola Rossa, uno de los spots más famosos de Cerdeña. 🌊🏄</div>
+                        <div class="tip-box">
+                            <strong>Destacado:</strong><br>
+                            • 🏄 Clases de surf y alquiler de equipo en la playa<br>
+                            • 🏖️ Espectacular bahía famosa por sus olas y atardeceres
+                        </div>
+                    </div>
+
+                    <a href="https://www.marineddabay.com/" target="_blank" rel="noopener noreferrer" class="btn-map">🌐 MarineddaBay.com →</a>
                 </div>
 
                 <!-- Kayak Adventure -->
@@ -1250,50 +1477,12 @@
         </section>
     </main>
 
-    <!-- Bottom Navigation Bar -->
-    <nav class="bottom-nav">
-        <button type="button" class="nav-item active" onclick="switchTab('casa', this)">
-            <span class="nav-icon">🏡</span>
-            <span data-lang="en">Villa</span>
-            <span data-lang="it">Villa</span>
-            <span data-lang="fr">Villa</span>
-            <span data-lang="es">Villa</span>
-        </button>
-        <button type="button" class="nav-item" onclick="switchTab('checkin', this)">
-            <span class="nav-icon">🔑</span>
-            <span>Check-in</span>
-        </button>
-        <button type="button" class="nav-item" onclick="switchTab('spiagge', this)">
-            <span class="nav-icon">🏖️</span>
-            <span data-lang="en">Beaches</span>
-            <span data-lang="it">Spiagge</span>
-            <span data-lang="fr">Plages</span>
-            <span data-lang="es">Playas</span>
-        </button>
-        <button type="button" class="nav-item" onclick="switchTab('gusto', this)">
-            <span class="nav-icon">🍽️</span>
-            <span data-lang="en">Dining</span>
-            <span data-lang="it">Ristoranti</span>
-            <span data-lang="fr">Restos</span>
-            <span data-lang="es">Restaurantes</span>
-        </button>
-        <button type="button" class="nav-item" onclick="switchTab('escursioni', this)">
-            <span class="nav-icon">⛵</span>
-            <span data-lang="en">Tours</span>
-            <span data-lang="it">Escursioni</span>
-            <span data-lang="fr">Excursions</span>
-            <span data-lang="es">Tours</span>
-        </button>
-        <button type="button" class="nav-item" onclick="switchTab('contatti', this)">
-            <span class="nav-icon">📞</span>
-            <span data-lang="en">Contacts</span>
-            <span data-lang="it">Contatti</span>
-            <span data-lang="fr">Contacts</span>
-            <span data-lang="es">Contactos</span>
-        </button>
-    </nav>
-
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menuOverlay');
+            menu.classList.toggle('open');
+        }
+
         function setLanguage(lang) {
             document.body.className = 'lang-' + lang;
             
@@ -1313,10 +1502,14 @@
             const targetTab = document.getElementById('tab-' + tabId);
             if (targetTab) targetTab.classList.add('active');
 
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => item.classList.remove('active'));
+            const menuBtns = document.querySelectorAll('.menu-link-btn');
+            menuBtns.forEach(item => item.classList.remove('active'));
 
             if (btn) btn.classList.add('active');
+
+            // Chiudi il menu dopo aver selezionato una scheda
+            toggleMenu();
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1372,4 +1565,3 @@
     </script>
 </body>
 </html>
-
