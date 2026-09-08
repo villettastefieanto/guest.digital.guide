@@ -453,6 +453,7 @@
         body.lang-it [data-lang="it"] { display: block; }
         body.lang-fr [data-lang="fr"] { display: block; }
         body.lang-es [data-lang="es"] { display: block; }
+        body.lang-de [data-lang="de"] { display: block; }
 
         span[data-lang], strong[data-lang], div[data-lang].inline-block {
             display: none !important;
@@ -461,6 +462,7 @@
         body.lang-it span[data-lang="it"], body.lang-it strong[data-lang="it"], body.lang-it div[data-lang="it"].inline-block { display: inline !important; }
         body.lang-fr span[data-lang="fr"], body.lang-fr strong[data-lang="fr"], body.lang-fr div[data-lang="fr"].inline-block { display: inline !important; }
         body.lang-es span[data-lang="es"], body.lang-es strong[data-lang="es"], body.lang-es div[data-lang="es"].inline-block { display: inline !important; }
+        body.lang-de span[data-lang="de"], body.lang-de strong[data-lang="de"], body.lang-de div[data-lang="de"].inline-block { display: inline !important; }
     </style>
 </head>
 <body class="lang-en">
@@ -469,6 +471,7 @@
     <div class="lang-picker-fixed">
         <button type="button" class="lang-btn active" data-lang-code="en" onclick="setLanguage('en')">🇬🇧 EN</button>
         <button type="button" class="lang-btn" data-lang-code="it" onclick="setLanguage('it')">🇮🇹 IT</button>
+        <button type="button" class="lang-btn" data-lang-code="de" onclick="setLanguage('de')">🇩🇪 DE</button>
         <button type="button" class="lang-btn" data-lang-code="fr" onclick="setLanguage('fr')">🇫🇷 FR</button>
         <button type="button" class="lang-btn" data-lang-code="es" onclick="setLanguage('es')">🇪🇸 ES</button>
     </div>
@@ -487,6 +490,7 @@
                     <span class="icon">🏡</span>
                     <span data-lang="en">Villa Info</span>
                     <span data-lang="it">Info Villa</span>
+                    <span data-lang="de">Villa-Infos</span>
                     <span data-lang="fr">Info Villa</span>
                     <span data-lang="es">Info Villa</span>
                 </button>
@@ -502,6 +506,7 @@
                     <span class="icon">🏖️</span>
                     <span data-lang="en">Beaches & Coves</span>
                     <span data-lang="it">Spiagge & Calette</span>
+                    <span data-lang="de">Strände & Buchten</span>
                     <span data-lang="fr">Plages & Criques</span>
                     <span data-lang="es">Playas y Calas</span>
                 </button>
@@ -511,6 +516,7 @@
                     <span class="icon">🍽️</span>
                     <span data-lang="en">Dining & Drinks</span>
                     <span data-lang="it">Ristoranti & Drink</span>
+                    <span data-lang="de">Restaurants & Bars</span>
                     <span data-lang="fr">Restaurants & Bars</span>
                     <span data-lang="es">Restaurantes y Bares</span>
                 </button>
@@ -520,6 +526,7 @@
                     <span class="icon">⛵</span>
                     <span data-lang="en">Experience & Tours</span>
                     <span data-lang="it">Esperienze & Escursioni</span>
+                    <span data-lang="de">Erlebnisse & Touren</span>
                     <span data-lang="fr">Expériences & Excursions</span>
                     <span data-lang="es">Experiencias y Excursiones</span>
                 </button>
@@ -529,6 +536,7 @@
                     <span class="icon">📞</span>
                     <span data-lang="en">Contacts & Assistance</span>
                     <span data-lang="it">Contatti & Assistenza</span>
+                    <span data-lang="de">Kontakte & Hilfe</span>
                     <span data-lang="fr">Contacts & Assistance</span>
                     <span data-lang="es">Contactos y Asistencia</span>
                 </button>
@@ -541,6 +549,7 @@
         <h1>Villetta Stefi e Anto</h1>
         <p data-lang="en">Your vacation home in the heart of the pink rock</p>
         <p data-lang="it">La tua casa vacanze nel cuore della roccia rosa</p>
+        <p data-lang="de">Ihr Ferienhaus im Herzen dei rosafarbenen Felsen</p>
         <p data-lang="fr">Votre maison de vacances au cœur della roche rose</p>
         <p data-lang="es">Tu casa de vacaciones en el corazón de la roca rosa</p>
     </header>
@@ -554,6 +563,7 @@
                     <span class="icon">📶</span>
                     <span data-lang="en">Wi-Fi Connection</span>
                     <span data-lang="it">Connessione Wi-Fi</span>
+                    <span data-lang="de">WLAN-Verbindung</span>
                     <span data-lang="fr">Connexion Wi-Fi</span>
                     <span data-lang="es">Conexión Wi-Fi</span>
                 </div>
@@ -561,6 +571,7 @@
                     <div class="wifi-field">
                         <div class="wifi-label" data-lang="en">Network Name (SSID)</div>
                         <div class="wifi-label" data-lang="it">Nome Rete (SSID)</div>
+                        <div class="wifi-label" data-lang="de">Netzwerkname (SSID)</div>
                         <div class="wifi-label" data-lang="fr">Nom du réseau (SSID)</div>
                         <div class="wifi-label" data-lang="es">Nombre de red (SSID)</div>
                         <div class="wifi-value">stel-Bosio</div>
@@ -568,6 +579,7 @@
                     <div class="wifi-field">
                         <div class="wifi-label" data-lang="en">Password</div>
                         <div class="wifi-label" data-lang="it">Password</div>
+                        <div class="wifi-label" data-lang="de">Passwort</div>
                         <div class="wifi-label" data-lang="fr">Mot de passe</div>
                         <div class="wifi-label" data-lang="es">Contraseña</div>
                         <div class="wifi-value" id="wifi-pass">costaparadiso22</div>
@@ -575,6 +587,7 @@
                     <button class="btn-copy" onclick="copyWifi()" type="button">
                         <span data-lang="en">📋 Copy Password</span>
                         <span data-lang="it">📋 Copia Password</span>
+                        <span data-lang="de">📋 Passwort kopieren</span>
                         <span data-lang="fr">📋 Copier le mot de passe</span>
                         <span data-lang="es">📋 Copiar contraseña</span>
                     </button>
@@ -586,6 +599,7 @@
                     <span class="icon">🚗</span>
                     <span data-lang="en">Parking & Access</span>
                     <span data-lang="it">Parcheggio & Accesso</span>
+                    <span data-lang="de">Parken & Zufahrt</span>
                     <span data-lang="fr">Parking et accès</span>
                     <span data-lang="es">Aparcamiento y acceso</span>
                 </div>
@@ -593,30 +607,36 @@
                     <li>
                         <strong data-lang="en">Reserved Parking Spot:</strong>
                         <strong data-lang="it">Posto Auto Riservato:</strong>
+                        <strong data-lang="de">Reservierter Parkplatz:</strong>
                         <strong data-lang="fr">Place de parking réservée :</strong>
                         <strong data-lang="es">Plaza de aparcamiento reservada:</strong>
                         <span data-lang="en">Reserved parking space number <strong>4</strong> is available.</span>
                         <span data-lang="it">È disponibile il posto auto riservato numero <strong>4</strong>.</span>
+                        <span data-lang="de">Der reservierte Parkplatz Nummer <strong>4</strong> steht Ihnen zur Verfügung.</span>
                         <span data-lang="fr">La place de parking réservée numéro <strong>4</strong> est disponible.</span>
                         <span data-lang="es">La plaza de aparcamiento reservada número <strong>4</strong> está disponible.</span>
                     </li>
                     <li>
                         <strong data-lang="en">Driving Advice:</strong>
                         <strong data-lang="it">Consigli Guida:</strong>
+                        <strong data-lang="de">Fahrhinweise:</strong>
                         <strong data-lang="fr">Conseils de conduite :</strong>
                         <strong data-lang="es">Consejos de conducción:</strong>
                         <span data-lang="en">The roads in Costa Paradiso are scenic with tight turns. Please drive carefully.</span>
                         <span data-lang="it">Le strade di Costa Paradiso sono panoramiche con curve strette. Si raccomanda prudenza.</span>
+                        <span data-lang="de">Die Straßen in Costa Paradiso sind panoramareich und eng. Bitte fahren Sie vorsichtig.</span>
                         <span data-lang="fr">Les routes de Costa Paradiso sont panoramiques avec des virages serrés. Soyez prudent.</span>
                         <span data-lang="es">Las carreteras de Costa Paradiso son panorámicas con curvas cerradas. Conduzca con precaución.</span>
                     </li>
                     <li>
                         <strong data-lang="en">Gate:</strong>
                         <strong data-lang="it">Cancello:</strong>
+                        <strong data-lang="de">Einfahrtstor:</strong>
                         <strong data-lang="fr">Portail :</strong>
                         <strong data-lang="es">Puerta:</strong>
                         <span data-lang="en">Always keep the gate closed to prevent local wildlife from entering the property.</span>
                         <span data-lang="it">Tenere sempre il cancello chiuso per evitare l'ingresso di animali selvatici.</span>
+                        <span data-lang="de">Halten Sie das Tor stets geschlossen, damit keine Wildtiere auf das Grundstück gelangen.</span>
                         <span data-lang="fr">Gardez toujours le portail fermé pour éviter l'entrée d'animaux sauvages.</span>
                         <span data-lang="es">Mantenga siempre la puerta cerrada para evitar que entren animales salvajes.</span>
                     </li>
@@ -628,6 +648,7 @@
                     <span class="icon">🏊‍♂️</span>
                     <span data-lang="en">Swimming Pool Rules</span>
                     <span data-lang="it">Regolamento Piscina</span>
+                    <span data-lang="de">Pool-Regeln</span>
                     <span data-lang="fr">Règlement de la piscine</span>
                     <span data-lang="es">Reglamento de la piscina</span>
                 </div>
@@ -635,30 +656,36 @@
                     <li>
                         <strong data-lang="en">Hours & Quiet Times:</strong>
                         <strong data-lang="it">Orari & Silenzio:</strong>
+                        <strong data-lang="de">Zeiten & Ruhezeiten:</strong>
                         <strong data-lang="fr">Heures et silence :</strong>
                         <strong data-lang="es">Horarios y silencio:</strong>
                         <span data-lang="en">There are no strict hours, but quietness is required at night and early in the morning.</span>
                         <span data-lang="it">Non ci sono orari rigidi, ma di notte e al mattino presto è richiesto il rispetto della quiete.</span>
+                        <span data-lang="de">Es gibt keine festen Zeiten, jedoch wird nachts und am frühen Morgen um Ruhe gebeten.</span>
                         <span data-lang="fr">Pas d'horaires stricts, mais le silence est requis la nuit et tôt le matin.</span>
                         <span data-lang="es">No hay horarios estrictos, pero se requiere silencio por la noche y temprano en la mañana.</span>
                     </li>
                     <li>
                         <strong data-lang="en">Mandatory Shower:</strong>
                         <strong data-lang="it">Doccia Obbligatoria:</strong>
+                        <strong data-lang="de">Duschen ist Pflicht:</strong>
                         <strong data-lang="fr">Douche obligatoire :</strong>
                         <strong data-lang="es">Ducha obligatoria:</strong>
                         <span data-lang="en">Always shower before entering the pool.</span>
                         <span data-lang="it">Fare sempre la doccia prima di entrare in acqua.</span>
+                        <span data-lang="de">Bitte duschen Sie immer, bevor Sie den Pool betreten.</span>
                         <span data-lang="fr">Prenez toujours une douche avant d'entrer dans l'eau.</span>
                         <span data-lang="es">Dúchese siempre antes de entrar al agua.</span>
                     </li>
                     <li>
                         <strong data-lang="en">Children:</strong>
                         <strong data-lang="it">Bambini:</strong>
+                        <strong data-lang="de">Kinder:</strong>
                         <strong data-lang="fr">Enfants :</strong>
                         <strong data-lang="es">Niños:</strong>
                         <span data-lang="en">Must always be accompanied by an adult.</span>
                         <span data-lang="it">Devono essere sempre accompagnati da un adulto.</span>
+                        <span data-lang="de">Müssen stets von einem Erwachsenen beaufsichtigt werden.</span>
                         <span data-lang="fr">Doivent toujours être accompagnés d'un adulte.</span>
                         <span data-lang="es">Deben estar siempre acompañados por un adulto.</span>
                     </li>
@@ -670,6 +697,7 @@
                     <span class="icon">♻️</span>
                     <span data-lang="en">Recycling & Waste</span>
                     <span data-lang="it">Raccolta Differenziata</span>
+                    <span data-lang="de">Mülltrennung</span>
                     <span data-lang="fr">Tri sélectif</span>
                     <span data-lang="es">Reciclaje de residuos</span>
                 </div>
@@ -677,6 +705,7 @@
                     <li>
                         <strong data-lang="en">Waste Collection Points:</strong>
                         <strong data-lang="it">Punti di Raccolta Rifiuti:</strong>
+                        <strong data-lang="de">Müllsammelstellen:</strong>
                         <strong data-lang="fr">Points de collecte des déchets :</strong>
                         <strong data-lang="es">Puntos de recogida de residuos:</strong>
                         <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;">
@@ -687,10 +716,12 @@
                     <li>
                         <strong data-lang="en">Sorting:</strong>
                         <strong data-lang="it">Rifiuti:</strong>
+                        <strong data-lang="de">Mülltrennung:</strong>
                         <strong data-lang="fr">Tri :</strong>
                         <strong data-lang="es">Clasificación:</strong>
                         <span data-lang="en">Please separate Plastic/Cans, Organic, Glass, Paper, and General Waste into the designated bins.</span>
                         <span data-lang="it">Separare Plastica/Lattine, Umido, Vetro, Carta e Secco nei mastelli dedicati.</span>
+                        <span data-lang="de">Bitte trennen Sie Plastik/Dosen, Bio, Glas, Papier und Restmüll in die entsprechenden Behälter.</span>
                         <span data-lang="fr">Séparez le plastique/cannettes, l'organique, le verre, le papier et les déchets ménagers.</span>
                         <span data-lang="es">Separe el plástico/latas, lo orgánico, el vidrio, el papel y la basura general en los cubos correspondientes.</span>
                     </li>
@@ -705,6 +736,7 @@
                     <span class="icon">📍</span>
                     <span data-lang="en">Check-in Location</span>
                     <span data-lang="it">Luogo del Check-in</span>
+                    <span data-lang="de">Check-in Ort</span>
                     <span data-lang="fr">Lieu de Check-in</span>
                     <span data-lang="es">Lugar de Check-in</span>
                 </div>
@@ -712,6 +744,7 @@
                 <div class="alert-box">
                     <span data-lang="en"><strong>⚠️ Important:</strong> Check-in does <strong>NOT</strong> take place directly at the property. Please make sure to go to the reception office first.</span>
                     <span data-lang="it"><strong>⚠️ Importante:</strong> Il check-in <strong>NON</strong> avviene direttamente in struttura. Recarsi prima all'ufficio reception.</span>
+                    <span data-lang="de"><strong>⚠️ Wichtig:</strong> Der Check-in findet <strong>NICHT</strong> direkt in der Unterkunft statt. Bitte gehen Sie zuerst zum Rezeptionsbüro.</span>
                     <span data-lang="fr"><strong>⚠️ Important :</strong> Le check-in ne se fait <strong>PAS</strong> directement au logement. Rendez-vous d'abord à la réception.</span>
                     <span data-lang="es"><strong>⚠️ Important:</strong> El check-in <strong>NO</strong> se realiza directamente en la propiedad. Diríjase primero a la recepción.</span>
                 </div>
@@ -723,6 +756,7 @@
                 <a href="https://tinyurl.com/villastefieantocheckin" target="_blank" rel="noopener noreferrer" class="btn-map-inline" style="display: inline-block; width: 100%; text-align: center; padding: 10px; margin-top: 8px;">
                     <span data-lang="en">📍 Open Location on Google Maps →</span>
                     <span data-lang="it">📍 Apri la Posizione su Google Maps →</span>
+                    <span data-lang="de">📍 Standort in Google Maps öffnen →</span>
                     <span data-lang="fr">📍 Ouvrir la position sur Google Maps →</span>
                     <span data-lang="es">📍 Abrir ubicación en Google Maps →</span>
                 </a>
@@ -733,6 +767,7 @@
                     <span class="icon">🕐</span>
                     <span data-lang="en">Check-in & Check-out Hours</span>
                     <span data-lang="it">Orari Check-in e Check-out</span>
+                    <span data-lang="de">Check-in & Check-out Zeiten</span>
                     <span data-lang="fr">Horaires de Check-in & Check-out</span>
                     <span data-lang="es">Horarios de Check-in y Check-out</span>
                 </div>
@@ -740,6 +775,7 @@
                     <li>
                         <strong data-lang="en">Check-in Hours:</strong>
                         <strong data-lang="it">Orario Check-in:</strong>
+                        <strong data-lang="de">Check-in Zeiten:</strong>
                         <strong data-lang="fr">Heures de Check-in :</strong>
                         <strong data-lang="es">Horario de Check-in:</strong>
                         <br>• 9:00 AM – 1:00 PM
@@ -747,6 +783,7 @@
                         <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">
                             <span data-lang="en">If you plan to arrive outside these time slots, please let us know in advance. Late-night arrivals may incur an extra fee.</span>
                             <span data-lang="it">Se prevedi di arrivare fuori da questi orari, avvisaci in anticipo. Gli arrivi in tarda serata potrebbero comportare un supplemento.</span>
+                            <span data-lang="de">Wenn Sie außerhalb dieser Zeiten anreisen, informieren Sie uns bitte im Voraus. Späte Ankünfte können Zusatzgebühren verursachen.</span>
                             <span data-lang="fr">Si vous prévoyez d'arriver en dehors de ces horaires, prévenez-nous à l'avance. Des frais supplémentaires peuvent s'appliquer tard le soir.</span>
                             <span data-lang="es">Si planea llegar fuera de este horario, avísenos con antelación. Las llegadas nocturnas pueden conllevar un suplemento.</span>
                         </div>
@@ -754,11 +791,13 @@
                     <li>
                         <strong data-lang="en">Check-out Hours:</strong>
                         <strong data-lang="it">Orario Check-out:</strong>
+                        <strong data-lang="de">Check-out Zeiten:</strong>
                         <strong data-lang="fr">Heure de Check-out :</strong>
                         <strong data-lang="es">Horario de Check-out:</strong>
                         <br>
                         <span data-lang="en">Must be completed by <strong>10:00 AM</strong> (contact us if you have special needs).</span>
                         <span data-lang="it">Entro le ore <strong>10:00</strong> (contattaci per esigenze particolari).</span>
+                        <span data-lang="de">Muss bis <strong>10:00 Uhr</strong> erfolgen (kontaktieren Sie uns bei Sonderwünschen).</span>
                         <span data-lang="fr">Avant <strong>10h00</strong> (contactez-nous en cas de besoin spécifique).</span>
                         <span data-lang="es">Antes de las <strong>10:00 AM</strong> (contáctenos si tiene alguna necesidad especial).</span>
                     </li>
@@ -770,13 +809,15 @@
                     <span class="icon">🪪</span>
                     <span data-lang="en">Required Documents</span>
                     <span data-lang="it">Documenti Richiesti</span>
+                    <span data-lang="de">Erforderliche Dokumente</span>
                     <span data-lang="fr">Documents requis</span>
                     <span data-lang="es">Documentos requeridos</span>
                 </div>
                 <p style="font-size: 0.9rem; color: var(--text-main);">
                     <span data-lang="en">Upon arrival, you will be asked to present a valid government-issued ID (passport, national ID card, or driver's license) for <strong>all guests</strong>. This is a legal requirement in Italy.</span>
                     <span data-lang="it">All'arrivo verrà richiesto un documento d'identità valido per <strong>tutti gli ospiti</strong>. È un obbligo di legge.</span>
-                    <span data-lang="fr">À votre arrivée, une pièce d'identité valide vous sera demandée pour <strong>tous les clients</strong>. C'est una obligation légale en Italie.</span>
+                    <span data-lang="de">Bei der Ankunft muss für <strong>alle Gäste</strong> ein gültiges Ausweisdokument vorgelegt werden. Dies ist in Italien gesetzlich vorgeschrieben.</span>
+                    <span data-lang="fr">À votre arrivée, une pièce d'identité valide vous sera demandée pour <strong>tous les clients</strong>. C'est une obligation légale en Italie.</span>
                     <span data-lang="es">A su llegada, se le solicitará un documento de identidad válido para <strong>todos los huéspedes</strong>. Es un requisito legal en Italia.</span>
                 </p>
             </div>
@@ -786,18 +827,21 @@
                     <span class="icon">🙋</span>
                     <span data-lang="en">You're in Good Hands</span>
                     <span data-lang="it">Accoglienza Personale</span>
+                    <span data-lang="de">Persönlicher Empfang</span>
                     <span data-lang="fr">Vous êtes entre de bonnes mains</span>
                     <span data-lang="es">Está en buenas manos</span>
                 </div>
                 <p style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 12px;">
                     <span data-lang="en">A trusted contact person will welcome you personally, escort you to the property, and show you everything you need to know (house rules, Wi-Fi, key handling, appliances).</span>
                     <span data-lang="it">Una persona di fiducia ti accoglierà di persona, ti accompagnerà alla struttura e ti mostrerà tutto ciò che c'è da sapere.</span>
+                    <span data-lang="de">Eine Vertrauensperson wird Sie persönlich empfangen, Sie zur Unterkunft begleiten und Ihnen alles Wichtige erklären.</span>
                     <span data-lang="fr">Une personne de confiance vous accueillera en personne, vous accompagnera au logement et vous expliquera tout.</span>
                     <span data-lang="es">Una persona de confianza le dará la bienvenida en persona, le acompañará a la propiedad y le explicará todo lo necesario.</span>
                 </p>
                 <div class="tip-box">
                     ⏱️ <span data-lang="en"><strong>Heads Up:</strong> Please send us a message about <strong>1 hour before your arrival</strong> so we can be ready for you!</span>
                     <span data-lang="it"><strong>Avviso:</strong> Invia un messaggio circa <strong>1 ora prima del tuo arrivo</strong> per permetterci di prepararci al meglio!</span>
+                    <span data-lang="de"><strong>Hinweis:</strong> Senden Sie uns bitte ca. <strong>1 Stunde vor Ankunft</strong> eine Nachricht, damit wir bereitstehen!</span>
                     <span data-lang="fr"><strong>Rappel :</strong> Envoyez-nous un message environ <strong>1 heure avant votre arrivée</strong> !</span>
                     <span data-lang="es"><strong>Aviso:</strong> ¡Envíenos un mensaje aproximadamente <strong>1 hora antes de su llegada</strong>!</span>
                 </div>
@@ -808,6 +852,7 @@
                     <span class="icon">📞</span>
                     <span data-lang="en">Check-in Assistance Contacts</span>
                     <span data-lang="it">Contatti Assistenza Check-in</span>
+                    <span data-lang="de">Check-in Hilfekontakte</span>
                     <span data-lang="fr">Contacts d'assistance Check-in</span>
                     <span data-lang="es">Contactos de asistencia Check-in</span>
                 </div>
@@ -827,6 +872,7 @@
                         <div>
                             <div data-lang="en">Direct Phone Call</div>
                             <div data-lang="it">Chiamata Diretta</div>
+                            <div data-lang="de">Direkter Anruf</div>
                             <div data-lang="fr">Appel direct</div>
                             <div data-lang="es">Llamada directa</div>
                             <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">+39 348 9693508</div>
@@ -844,6 +890,7 @@
                     <span class="icon">🏖️</span>
                     <span data-lang="en">Beaches & Coves</span>
                     <span data-lang="it">Spiagge & Calette</span>
+                    <span data-lang="de">Strände & Buchten</span>
                     <span data-lang="fr">Plages & Criques</span>
                     <span data-lang="es">Playas y Calas</span>
                 </div>
@@ -853,12 +900,14 @@
                         <div class="item-title">Spiaggia di Li Cossi</div>
                         <span class="item-tag" data-lang="en">Iconic</span>
                         <span class="item-tag" data-lang="it">Iconica</span>
+                        <span class="item-tag" data-lang="de">Kultstrand</span>
                         <span class="item-tag" data-lang="fr">Incontournable</span>
                         <span class="item-tag" data-lang="es">Icónica</span>
                     </div>
                     <div class="item-desc" data-lang="en">Accessible via a scenic trail starting from the small marina.</div>
                     <div class="item-desc" data-lang="it">Raggiungibile con una suggestiva passeggiata panoramica dal porticciolo.</div>
-                    <div class="item-desc" data-lang="fr">Accessible par un sentier panoramique à partir del petit port.</div>
+                    <div class="item-desc" data-lang="de">Erreichbar über einen malerischen Panoramaweg vom kleinen Hafen aus.</div>
+                    <div class="item-desc" data-lang="fr">Accessible par un sentier panoramique à partir du petit port.</div>
                     <div class="item-desc" data-lang="es">Accesible a través de un sendero panorámico desde el pequeño puerto.</div>
                     <a href="https://maps.google.com/?q=Spiaggia+di+Li+Cossi" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
@@ -868,12 +917,14 @@
                         <div class="item-title">Le Sorgenti</div>
                         <span class="item-tag" data-lang="en">Natural Pools</span>
                         <span class="item-tag" data-lang="it">Piscine Naturali</span>
+                        <span class="item-tag" data-lang="de">Natürliche Pools</span>
                         <span class="item-tag" data-lang="fr">Piscines naturelles</span>
                         <span class="item-tag" data-lang="es">Piscinas naturales</span>
                     </div>
                     <div class="item-desc" data-lang="en">Flat red rocks and spectacular entries into crystal clear sea water.</div>
                     <div class="item-desc" data-lang="it">Rocce piatte e scese a mare spettacolari con acqua cristallina.</div>
-                    <div class="item-desc" data-lang="fr">Roches plates et accès à una eau cristalline spectaculaire.</div>
+                    <div class="item-desc" data-lang="de">Flache rote Felsen und spektakulärer Zugang zum kristallklaren Meer.</div>
+                    <div class="item-desc" data-lang="fr">Roches plates et accès à une eau cristalline spectaculaire.</div>
                     <div class="item-desc" data-lang="es">Rocas planas y espectaculares bajadas al mar con aguas cristalinas.</div>
                     <a href="https://maps.google.com/?q=Le+Sorgenti+Costa+Paradiso" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
@@ -885,6 +936,7 @@
                     </div>
                     <div class="item-desc" data-lang="en">A beautiful cove surrounded by wind-sculpted granite rocks.</div>
                     <div class="item-desc" data-lang="it">Splendida caletta con rocce modellate dal vento e mare limpido.</div>
+                    <div class="item-desc" data-lang="de">Wunderschöne Bucht, umgeben von vom Wind geformten Granitfelsen.</div>
                     <div class="item-desc" data-lang="fr">Superbe crique aux rochers sculptés par le vent.</div>
                     <div class="item-desc" data-lang="es">Hermosa cala con rocas esculpidas por el viento y aguas transparentes.</div>
                     <a href="https://maps.app.goo.gl/HatFCv7HVVHaK34w6?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -895,11 +947,13 @@
                         <div class="item-title">Vignola Mare</div>
                         <span class="item-tag" data-lang="en">Scenic Watchtower</span>
                         <span class="item-tag" data-lang="it">Torre Panoramica</span>
+                        <span class="item-tag" data-lang="de">Aussichtsturm</span>
                         <span class="item-tag" data-lang="fr">Tour panoramique</span>
                         <span class="item-tag" data-lang="es">Torre panorámica</span>
                     </div>
                     <div class="item-desc" data-lang="en">Long sandy beach dominated by an ancient Spanish watchtower.</div>
                     <div class="item-desc" data-lang="it">Spiaggia lunghissima e selvaggia dominata da una torre aragonese.</div>
+                    <div class="item-desc" data-lang="de">Langer Sandstrand, überragt von einem alten spanischen Wachturm.</div>
                     <div class="item-desc" data-lang="fr">Grande plage sauvage dominée par une tour espagnole.</div>
                     <div class="item-desc" data-lang="es">Playa muy larga y salvaje dominada por una torre española.</div>
                     <a href="https://maps.app.goo.gl/4ofqLi4KMQXJqp2E7?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -910,11 +964,13 @@
                         <div class="item-title">Naracu Nieddu</div>
                         <span class="item-tag" data-lang="en">Pine Forest</span>
                         <span class="item-tag" data-lang="it">Pineta</span>
+                        <span class="item-tag" data-lang="de">Pinienwald</span>
                         <span class="item-tag" data-lang="fr">Forêt de pins</span>
                         <span class="item-tag" data-lang="es">Pinar</span>
                     </div>
                     <div class="item-desc" data-lang="en">A peaceful oasis with fine sand surrounded by a dense pine forest.</div>
                     <div class="item-desc" data-lang="it">Immersa in una fitta pineta, oasi di pace con sabbia finissima.</div>
+                    <div class="item-desc" data-lang="de">Oase der Ruhe mit feinstem Sand, umgeben von einem dichten Pinienwald.</div>
                     <div class="item-desc" data-lang="fr">Entourée d'une forêt de pins, une oasis de paix au sable fin.</div>
                     <div class="item-desc" data-lang="es">Rodeada de un denso pinar, un oasis de paz con arena finísima.</div>
                     <a href="https://maps.app.goo.gl/mWpAbQH3pf7TRCUd9?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -925,11 +981,13 @@
                         <div class="item-title">Rena Majore</div>
                         <span class="item-tag" data-lang="en">Sand Dunes</span>
                         <span class="item-tag" data-lang="it">Dune di Sabbia</span>
+                        <span class="item-tag" data-lang="de">Sanddünen</span>
                         <span class="item-tag" data-lang="fr">Dunes de sable</span>
                         <span class="item-tag" data-lang="es">Dunas de arena</span>
                     </div>
                     <div class="item-desc" data-lang="en">White sand dunes and turquoise ocean shades reminiscent of the Caribbean.</div>
                     <div class="item-desc" data-lang="it">Dune di sabbia bianchissima e mare dalle sfumature caraibiche.</div>
+                    <div class="item-desc" data-lang="de">Weiße Sanddünen und türkisblaues Meer mit karibischem Flair.</div>
                     <div class="item-desc" data-lang="fr">Dunes de sable blanc et mer aux nuances caraïbes.</div>
                     <div class="item-desc" data-lang="es">Dunas de arena blanca y mar con matices caribeños.</div>
                     <a href="https://maps.app.goo.gl/f7JzyBmSAVMa5c4M8?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -940,11 +998,13 @@
                         <div class="item-title">Cala Sarraina</div>
                         <span class="item-tag" data-lang="en">15 min drive</span>
                         <span class="item-tag" data-lang="it">15 min auto</span>
+                        <span class="item-tag" data-lang="de">15 Min. Auto</span>
                         <span class="item-tag" data-lang="fr">15 min en voiture</span>
                         <span class="item-tag" data-lang="es">15 min en coche</span>
                     </div>
                     <div class="item-desc" data-lang="en">Wild cove with fine sand, beach bar, and unforgettable sunsets.</div>
                     <div class="item-desc" data-lang="it">Baia selvaggia con sabbia fine, chiosco bar e tramonti indimenticabili.</div>
+                    <div class="item-desc" data-lang="de">Wilde Bucht mit feinem Sand, Strandbar und unvergesslichen Sonnenuntergängen.</div>
                     <div class="item-desc" data-lang="fr">Crique sauvage au sable fin, bar de plage et couchers de soleil inoubliables.</div>
                     <div class="item-desc" data-lang="es">Bahía salvaje con arena fina, chiringuito y atardeceres inolvidables.</div>
                     <a href="https://maps.app.goo.gl/jQZXy6ZJLs5KtoQQA?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -959,6 +1019,7 @@
                     <span class="icon">🍽️</span>
                     <span data-lang="en">Restaurants & Drinks</span>
                     <span data-lang="it">Ristoranti & Drink</span>
+                    <span data-lang="de">Restaurants & Bars</span>
                     <span data-lang="fr">Restaurants & Bars</span>
                     <span data-lang="es">Restaurantes y Bares</span>
                 </div>
@@ -968,6 +1029,7 @@
                     <div>
                         <span data-lang="en"><strong>Tip:</strong> Booking in advance is highly recommended for all venues!</span>
                         <span data-lang="it"><strong>Consiglio:</strong> È fortemente raccomandata la prenotazione in anticipo per tutti i locali!</span>
+                        <span data-lang="de"><strong>Tipp:</strong> Eine frühzeitige Reservierung wird für alle Lokale dringend empfohlen!</span>
                         <span data-lang="fr"><strong>Conseil :</strong> Il est fortement recommandé de réserver à l'avance !</span>
                         <span data-lang="es"><strong>Consejo:</strong> ¡Se recomienda reservar con antelación en todos los locales!</span>
                     </div>
@@ -977,6 +1039,7 @@
                     <span>📍</span> 
                     <span data-lang="en">In Costa Paradiso</span>
                     <span data-lang="it">A Costa Paradiso</span>
+                    <span data-lang="de">In Costa Paradiso</span>
                     <span data-lang="fr">À Costa Paradiso</span>
                     <span data-lang="es">En Costa Paradiso</span>
                 </div>
@@ -986,11 +1049,13 @@
                         <div class="item-title">Il Calice d'Oro</div>
                         <span class="item-tag" data-lang="en">Fine Dining</span>
                         <span class="item-tag" data-lang="it">Alta Qualità</span>
+                        <span class="item-tag" data-lang="de">Gehobene Küche</span>
                         <span class="item-tag" data-lang="fr">Cuisine raffinée</span>
                         <span class="item-tag" data-lang="es">Alta cocina</span>
                     </div>
                     <div class="item-desc" data-lang="en">Refined cuisine and high quality dishes. Slightly higher price range, top level.</div>
                     <div class="item-desc" data-lang="it">Cucina raffinata e piatti eccellenti. Un po' più costoso, ma di alto livello.</div>
+                    <div class="item-desc" data-lang="de">Raffinierte Küche und exzellente Gerichte. Etwas teurer, aber erstklassig.</div>
                     <div class="item-desc" data-lang="fr">Cuisine raffinée et plats excellents. Prix plus élevé, mais niveau remarquable.</div>
                     <div class="item-desc" data-lang="es">Cocina refinada y platos excelentes. Precio más elevado, excelente calidad.</div>
                     <a href="https://goo.gl/maps/mj7JmLwhFRbdEPgW6" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -1001,11 +1066,13 @@
                         <div class="item-title">Ristorante Soento</div>
                         <span class="item-tag" data-lang="en">Local Flavors</span>
                         <span class="item-tag" data-lang="it">Cucina Locale</span>
+                        <span class="item-tag" data-lang="de">Lokale Küche</span>
                         <span class="item-tag" data-lang="fr">Cuisine locale</span>
                         <span class="item-tag" data-lang="es">Cocina local</span>
                     </div>
                     <div class="item-desc" data-lang="en">Great option within Costa Paradiso to enjoy regional specialties.</div>
                     <div class="item-desc" data-lang="it">Ottima opzione a Costa Paradiso per gustare specialità locali.</div>
+                    <div class="item-desc" data-lang="de">Tolle Option in Costa Paradiso, um regionale Spezialitäten zu genießen.</div>
                     <div class="item-desc" data-lang="fr">Excellente option à Costa Paradiso pour déguster des spécialités locales.</div>
                     <div class="item-desc" data-lang="es">Gran opción en Costa Paradiso para disfrutar de especialidades locales.</div>
                     <a href="https://maps.app.goo.gl/VME91NPJn44tB1fR7?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -1016,11 +1083,13 @@
                         <div class="item-title">Maya Restaurant</div>
                         <span class="item-tag" data-lang="en">Sunset & Drinks</span>
                         <span class="item-tag" data-lang="it">Colazioni & Aperitivi</span>
+                        <span class="item-tag" data-lang="de">Frühstück & Aperitif</span>
                         <span class="item-tag" data-lang="fr">Petit déjeuner & Aperitif</span>
                         <span class="item-tag" data-lang="es">Desayunos y Cócteles</span>
                     </div>
                     <div class="item-desc" data-lang="en">Stunning location on cliffs. Perfect for breakfast or sunset aperitifs.</div>
                     <div class="item-desc" data-lang="it">Location stupenda sulle scogliere. Perfetta per colazioni o aperitivi al tramonto.</div>
+                    <div class="item-desc" data-lang="de">Traumhafte Lage auf den Klippen. Perfekt für Frühstück oder Drinks zum Sonnenuntergang.</div>
                     <div class="item-desc" data-lang="fr">Emplacement magnifique sur les falaises. Parfait pour le petit-déjeuner ou un verre au coucher du soleil.</div>
                     <div class="item-desc" data-lang="es">Ubicación espectacular en los acantilados. Ideal para desayunos o cócteles al atardecer.</div>
                     <a href="https://goo.gl/maps/q7zAvJ3GxYcgqaGx6" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -1030,6 +1099,7 @@
                     <span>🚗</span> 
                     <span data-lang="en">Nearby / Surrounding Area</span>
                     <span data-lang="it">Fuori Costa Paradiso</span>
+                    <span data-lang="de">In der Umgebung</span>
                     <span data-lang="fr">Aux alentours</span>
                     <span data-lang="es">Alrededores</span>
                 </div>
@@ -1039,11 +1109,13 @@
                         <div class="item-title">Il Geranio</div>
                         <span class="item-tag" data-lang="en">Traditional</span>
                         <span class="item-tag" data-lang="it">Tradizione</span>
+                        <span class="item-tag" data-lang="de">Traditionell</span>
                         <span class="item-tag" data-lang="fr">Traditionnel</span>
                         <span class="item-tag" data-lang="es">Tradicional</span>
                     </div>
                     <div class="item-desc" data-lang="en">Cozy restaurant nearby for a pleasant dinner outside the resort.</div>
                     <div class="item-desc" data-lang="it">Accogliente ristorante nei dintorni per una piacevole cena fuori zona.</div>
+                    <div class="item-desc" data-lang="de">Gemütliches Restaurant in der Nähe für ein schönes Abendessen.</div>
                     <div class="item-desc" data-lang="fr">Restaurant chaleureux dans les environs pour un agréable dîner.</div>
                     <div class="item-desc" data-lang="es">Acogedor restaurante cercano para una agradable cena fuera.</div>
                     <a href="https://goo.gl/maps/ew6FCuZT2nfMob148" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -1054,11 +1126,13 @@
                         <div class="item-title">La Terrazza sul mare</div>
                         <span class="item-tag" data-lang="en">Grilled Seafood</span>
                         <span class="item-tag" data-lang="it">Pesce alla Griglia</span>
+                        <span class="item-tag" data-lang="de">Gegrillter Fisch</span>
                         <span class="item-tag" data-lang="fr">Poissons grillés</span>
                         <span class="item-tag" data-lang="es">Pescado a la parrilla</span>
                     </div>
                     <div class="item-desc" data-lang="en">Fantastic grilled fish and breathtaking sea sunsets.</div>
                     <div class="item-desc" data-lang="it">Grigliate di pesce fantastiche ed un tramonto mozzafiato.</div>
+                    <div class="item-desc" data-lang="de">Phantastischer gegrillter Fisch und atemberaubender Meerblick zum Sonnenuntergang.</div>
                     <div class="item-desc" data-lang="fr">Poissons grillés fantastiques et coucher de soleil à couper le souffle.</div>
                     <div class="item-desc" data-lang="es">Pescado a la parrilla fantástico y un atardecer impresionante.</div>
                     <a href="https://goo.gl/maps/ZZC2MgfUyV3LXP5z9" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -1069,11 +1143,13 @@
                         <div class="item-title">Agriturismo Tuttusoni</div>
                         <span class="item-tag" data-lang="en">Sardinian Agriturismo</span>
                         <span class="item-tag" data-lang="it">Tipico Sardo</span>
+                        <span class="item-tag" data-lang="de">Typisch Sardisch</span>
                         <span class="item-tag" data-lang="fr">Auberge typique</span>
                         <span class="item-tag" data-lang="es">Agriturismo típico</span>
                     </div>
                     <div class="item-desc" data-lang="en">Authentic traditional Sardinian menu fixed price dinner (note: no sea view).</div>
                     <div class="item-desc" data-lang="it">Autentica cucina tipica sarda (nota: non ha vista mare).</div>
+                    <div class="item-desc" data-lang="de">Authentische sardische Küche mit Festpreis-Menü (Hinweis: kein Meerblick).</div>
                     <div class="item-desc" data-lang="fr">Cuisine sarde authentique (remarque : pas de vue sur la mer).</div>
                     <div class="item-desc" data-lang="es">Auténtica comida tradicional sarda (nota: no tiene vistas al mar).</div>
                     <a href="https://goo.gl/maps/rTv3Wftud1zf4d3K9" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -1084,11 +1160,13 @@
                         <div class="item-title">Agriturismo Santu Petru</div>
                         <span class="item-tag" data-lang="en">Agriturismo + Sea View</span>
                         <span class="item-tag" data-lang="it">Tipico + Vista Mare</span>
+                        <span class="item-tag" data-lang="de">Typisch + Meerblick</span>
                         <span class="item-tag" data-lang="fr">Typique + Vue mer</span>
                         <span class="item-tag" data-lang="es">Típico + Vistas al mar</span>
                     </div>
                     <div class="item-desc" data-lang="en">Traditional Sardinian cuisine combined with beautiful sea views.</div>
                     <div class="item-desc" data-lang="it">Cucina tradizionale sarda con bellissima vista mare.</div>
+                    <div class="item-desc" data-lang="de">Traditionelle sardische Küche kombiniert mit herrlichem Meerblick.</div>
                     <div class="item-desc" data-lang="fr">Cuisine traditionnelle sarde avec une vue magnifique sur la mer.</div>
                     <div class="item-desc" data-lang="es">Cocina tradicional sarda con preciosas vistas al mar.</div>
                     <a href="https://goo.gl/maps/38ueoYo44yCJywhi7" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -1099,11 +1177,13 @@
                         <div class="item-title">Almadia Restaurant</div>
                         <span class="item-tag" data-lang="en">Gourmet & View</span>
                         <span class="item-tag" data-lang="it">Gourmet & Vista</span>
+                        <span class="item-tag" data-lang="de">Gourmet & Aussicht</span>
                         <span class="item-tag" data-lang="fr">Gourmet & Vue</span>
                         <span class="item-tag" data-lang="es">Gourmet y Vistas</span>
                     </div>
                     <div class="item-desc" data-lang="en">Elegant environment, delicious food, and wonderful atmosphere.</div>
                     <div class="item-desc" data-lang="it">Ambiente curato, cibo squisito e bellissima atmosfera.</div>
+                    <div class="item-desc" data-lang="de">Elegantes Ambiente, vorzügliches Essen und tolle Atmosphäre.</div>
                     <div class="item-desc" data-lang="fr">Cadre soigné, nourriture délicieuse et superbe atmosphère.</div>
                     <div class="item-desc" data-lang="es">Ambiente cuidado, comida deliciosa y excelente atmósfera.</div>
                     <a href="https://maps.app.goo.gl/njpup4e7xbreF2bb7?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -1114,11 +1194,13 @@
                         <div class="item-title">Jatika</div>
                         <span class="item-tag" data-lang="en">Lounge & Food</span>
                         <span class="item-tag" data-lang="it">Lounge & Food</span>
+                        <span class="item-tag" data-lang="de">Lounge & Food</span>
                         <span class="item-tag" data-lang="fr">Lounge & Food</span>
                         <span class="item-tag" data-lang="es">Lounge y Comida</span>
                     </div>
                     <div class="item-desc" data-lang="en">Excellent choice nearby for dinner with high quality food and great vibe.</div>
                     <div class="item-desc" data-lang="it">Ottima scelta nei dintorni per una cena con eccellente atmosfera.</div>
+                    <div class="item-desc" data-lang="de">Hervorragende Wahl in der Nähe für ein Abendessen mit toller Stimmung.</div>
                     <div class="item-desc" data-lang="fr">Très bon choix dans les environs pour un dîner avec une excellente ambiance.</div>
                     <div class="item-desc" data-lang="es">Excelente opción en las cercanías para una cena con gran ambiente.</div>
                     <a href="https://maps.app.goo.gl/ykxa4ydcBKx3QjsX6?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
@@ -1133,6 +1215,7 @@
                     <span class="icon">⛵</span>
                     <span data-lang="en">Experience & Tours</span>
                     <span data-lang="it">Esperienze & Escursioni</span>
+                    <span data-lang="de">Erlebnisse & Touren</span>
                     <span data-lang="fr">Expériences & Excursions</span>
                     <span data-lang="es">Experiencias y Excursiones</span>
                 </div>
@@ -1159,6 +1242,15 @@
                             <strong>Attività e Servizi:</strong><br>
                             • 🪁 Corsi e noleggio di Windsurf, Kitesurf e Wingfoil<br>
                             • 🌊 Spot ideale sia per principianti che per esperti
+                        </div>
+                    </div>
+
+                    <div data-lang="de">
+                        <div class="item-desc">Probieren Sie Windsurfen, Kitesurfen oder Wingfoilen bei Vignolasports in Vignola Mare! 🏄‍♂️💨</div>
+                        <div class="tip-box">
+                            <strong>Aktivitäten & Kurse:</strong><br>
+                            • 🪁 Kurse und Verleih für Windsurf, Kitesurf & Wingfoil<br>
+                            • 🌊 Idealer Spot für Anfänger und Fortgeschrittene
                         </div>
                     </div>
 
@@ -1208,11 +1300,20 @@
                         </div>
                     </div>
 
+                    <div data-lang="de">
+                        <div class="item-desc">Reiten Sie die Wellen am Strand La Marinedda in Isola Rossa, einem der bekanntesten Surfspots Sardiniens. 🌊🏄</div>
+                        <div class="tip-box">
+                            <strong>Highlights:</strong><br>
+                            • 🏄 Surfkurse und Ausrüstungsverleih vor Ort<br>
+                            • 🏖️ Traumbucht bekannt für tolle Wellen und Sonnenuntergänge
+                        </div>
+                    </div>
+
                     <div data-lang="fr">
                         <div class="item-desc">Surfez sur le spot de la plage de La Marinedda à Isola Rossa, l'un des spots de surf les plus célèbres de Sardaigne. 🌊🏄</div>
                         <div class="tip-box">
                             <strong>Points forts :</strong><br>
-                            • 🏄 Cours de surf et location di matériel sur place<br>
+                            • 🏄 Cours de surf et location de matériel sur place<br>
                             • 🏖️ Superbe baie réputée pour ses vagues et ses couchers de soleil
                         </div>
                     </div>
@@ -1258,6 +1359,17 @@
                         </div>
                     </div>
 
+                    <!-- DE -->
+                    <div data-lang="de">
+                        <div class="item-desc">Lust auf etwas Aktivität auf dem Wasser? Hier ist eine tolle Idee für ein unvergessliches Erlebnis! 🌊☀️</div>
+                        <div class="tip-box">
+                            <strong>Sie können an diesen zwei nahen Stränden ein 2-Sitzer-Kajak mieten:</strong><br><br>
+                            • 🏖️ <strong>Strand von Vignola Mare:</strong> Paddeln Sie heraus und genießen Sie die Aussicht auf den aragonesischen Turm.<br><br>
+                            • 🏖️ <strong>Strand von Cala Sarraina:</strong> Umrunden Sie die beeindruckenden Felsformationen vor der Küste.<br><br>
+                            ☀️ <i>Keine Erfahrung erforderlich — genießen Sie einfach die Landschaft und vergessen Sie die Sonnencreme nicht!</i>
+                        </div>
+                    </div>
+
                     <!-- FR -->
                     <div data-lang="fr">
                         <div class="item-desc">Envie d'une activité sur l'eau ? Voici une excellente option pour un moment mémorable ! 🌊☀️</div>
@@ -1287,6 +1399,7 @@
                         <div class="item-title">🌳 Millenary Olive Trees of Luras</div>
                         <span class="item-tag" data-lang="en">Inland Treasure</span>
                         <span class="item-tag" data-lang="it">Tesoro dell'Entroterra</span>
+                        <span class="item-tag" data-lang="de">Schatz im Landesinneren</span>
                         <span class="item-tag" data-lang="fr">Trésor de l'intérieur</span>
                         <span class="item-tag" data-lang="es">Tesoros del interior</span>
                     </div>
@@ -1301,6 +1414,12 @@
                     <div data-lang="it">
                         <div class="item-desc">A circa 1 ora di auto nell'entroterra, troverai uno dei tesori naturali più straordinari della Sardegna: ulivi millenari stimati oltre 4.000 anni. ⏳</div>
                         <div class="tip-box">🏛️ <i>Sì — 4.000 anni. Questi alberi erano già secolari quando arrivarono i Romani. Una deviazione imperdibile!</i></div>
+                    </div>
+
+                    <!-- DE -->
+                    <div data-lang="de">
+                        <div class="item-desc">Etwa 1 Fahrstunde im Landesinneren finden Sie einen der faszinierendsten Naturschätze Sardiniens: über 4.000 Jahre alte Olivenbäume. ⏳</div>
+                        <div class="tip-box">🏛️ <i>Ja — 4.000 Jahre alt. Diese Bäume waren schon alt, als die Römer kamen. Ein beeindruckendes Naturerlebnis!</i></div>
                     </div>
 
                     <!-- FR -->
@@ -1320,6 +1439,7 @@
                         <a href="https://olivastrimillenariluras.it/" target="_blank" rel="noopener noreferrer" class="btn-map-inline">🌐
                             <span data-lang="en">Book Online →</span>
                             <span data-lang="it">Prenota Online →</span>
+                            <span data-lang="de">Online Buchen →</span>
                             <span data-lang="fr">Réserver en ligne →</span>
                             <span data-lang="es">Reservar en línea →</span>
                         </a>
@@ -1353,6 +1473,16 @@
                         </div>
                     </div>
 
+                    <div data-lang="de">
+                        <div class="item-desc">Erkunden Sie den Archipel von La Maddalena auf einem 12m Segelboot. Abfahrt von Palau (~1 Std. Fahrt).</div>
+                        <div class="tip-box">
+                            <strong>Verfügbare Touren:</strong><br>
+                            • 🌅 Sonnenuntergangs-Tour<br>
+                            • 🌤️ Halbtagstour (morgens/nachmittags)<br>
+                            • ☀️ Ganztagestour mit Badestopps
+                        </div>
+                    </div>
+
                     <div data-lang="fr">
                         <div class="item-desc">Explorez l'archipel de La Maddalena en voilier de 12m. Départs de Palau (~1h en voiture).</div>
                         <div class="tip-box">
@@ -1382,6 +1512,7 @@
                         <div class="item-title">🚙 Asinara Island 4x4 Tour</div>
                         <span class="item-tag" data-lang="en">National Park</span>
                         <span class="item-tag" data-lang="it">Parco Nazionale</span>
+                        <span class="item-tag" data-lang="de">Nationalpark</span>
                         <span class="item-tag" data-lang="fr">Parc National</span>
                         <span class="item-tag" data-lang="es">Parque Nacional</span>
                     </div>
@@ -1394,6 +1525,11 @@
                     <div data-lang="it">
                         <div class="item-desc">Tour in fuoristrada nel Parco Nazionale dell'Asinara alla scoperta degli asinelli bianchi.</div>
                         <div class="tip-box">🚗 <strong>Percorso:</strong> 1h di auto fino a Stintino, poi 20 min di traghetto.</div>
+                    </div>
+
+                    <div data-lang="de">
+                        <div class="item-desc">Jeep-Tour im Nationalpark Asinara, um die berühmten weißen Esel und die Natur zu entdecken.</div>
+                        <div class="tip-box">🚗 <strong>Anreise:</strong> ~1 Std. Fahrt nach Stintino, dann 20 Min. Fähre.</div>
                     </div>
 
                     <div data-lang="fr">
@@ -1418,6 +1554,7 @@
                     <span class="icon">📞</span>
                     <span data-lang="en">Contacts & Assistance</span>
                     <span data-lang="it">Contatti Proprietari & Assistenza</span>
+                    <span data-lang="de">Eigentümer & Hilfe</span>
                     <span data-lang="fr">Contacts & Assistance</span>
                     <span data-lang="es">Contactos y Asistencia</span>
                 </div>
@@ -1439,6 +1576,7 @@
                         <div>
                             <div data-lang="en">Check-in Support (Call)</div>
                             <div data-lang="it">Assistenza Check-in (Chiamata)</div>
+                            <div data-lang="de">Check-in Hilfe (Anruf)</div>
                             <div data-lang="fr">Assistance Check-in (Appel)</div>
                             <div data-lang="es">Asistencia Check-in (Llamada)</div>
                             <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">+39 348 9693508</div>
@@ -1453,6 +1591,7 @@
                         <div>
                             <div data-lang="en">Direct Phone Call</div>
                             <div data-lang="it">Chiamata Diretta</div>
+                            <div data-lang="de">Direkter Anruf</div>
                             <div data-lang="fr">Appel direct</div>
                             <div data-lang="es">Llamada directa</div>
                             <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">+39 346 5773806</div>
@@ -1467,6 +1606,7 @@
                         <div>
                             <div data-lang="en">Owners (WhatsApp)</div>
                             <div data-lang="it">Proprietari (WhatsApp)</div>
+                            <div data-lang="de">Eigentümer (WhatsApp)</div>
                             <div data-lang="fr">Propriétaires (WhatsApp)</div>
                             <div data-lang="es">Propietarios (WhatsApp)</div>
                             <div style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">Stefi & Anto</div>
@@ -1483,9 +1623,10 @@
                         <div>
                             <div style="color: #991B1B;" data-lang="en">Emergency Number</div>
                             <div style="color: #991B1B;" data-lang="it">Emergenze</div>
+                            <div style="color: #991B1B;" data-lang="de">Notrufnummer</div>
                             <div style="color: #991B1B;" data-lang="fr">Urgences</div>
                             <div style="color: #991B1B;" data-lang="es">Emergencias</div>
-                            <div style="font-size: 0.78rem; font-weight: normal; color: #B91C1C;">Call / Chiamare 112</div>
+                            <div style="font-size: 0.78rem; font-weight: normal; color: #B91C1C;">Call / Anrufen 112</div>
                         </div>
                     </div>
                     <span>→</span>
@@ -1540,6 +1681,7 @@
             const messages = {
                 en: '✅ Wi-Fi password copied to clipboard!',
                 it: '✅ Password Wi-Fi copiata negli appunti!',
+                de: '✅ WLAN-Passwort in die Zwischenablage kopiert!',
                 fr: '✅ Mot de passe Wi-Fi copié !',
                 es: '✅ ¡Contraseña Wi-Fi copiada!'
             };
