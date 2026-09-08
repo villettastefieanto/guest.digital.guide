@@ -56,8 +56,8 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border);
             color: var(--text-main);
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -70,6 +70,50 @@
 
         .hamburger-btn:active {
             transform: scale(0.92);
+        }
+
+        /* FIXED TOP LANGUAGE PICKER BAR */
+        .lang-picker-fixed {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            padding: 4px 6px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(2, 132, 199, 0.08);
+            color: var(--primary-dark);
         }
 
         /* OVERLAY MENU */
@@ -152,35 +196,6 @@
             font-size: 1.2rem;
         }
 
-        /* Language Switcher Bar */
-        .lang-picker {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 12px;
-        }
-
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .lang-btn.active, .lang-btn:hover {
-            background: white;
-            color: var(--primary-dark);
-            border-color: white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
-
         .hero {
             background: linear-gradient(135deg, #0284C7 0%, #0F172A 100%), 
                         url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80');
@@ -188,7 +203,7 @@
             background-position: center;
             background-blend-mode: overlay;
             color: white;
-            padding: 24px 20px 24px 20px;
+            padding: 70px 20px 28px 20px;
             text-align: center;
             border-bottom-left-radius: 24px;
             border-bottom-right-radius: 24px;
@@ -450,6 +465,14 @@
 </head>
 <body class="lang-en">
 
+    <!-- FIXED TOP LANGUAGE PICKER BAR -->
+    <div class="lang-picker-fixed">
+        <button type="button" class="lang-btn active" data-lang-code="en" onclick="setLanguage('en')">🇬🇧 EN</button>
+        <button type="button" class="lang-btn" data-lang-code="it" onclick="setLanguage('it')">🇮🇹 IT</button>
+        <button type="button" class="lang-btn" data-lang-code="fr" onclick="setLanguage('fr')">🇫🇷 FR</button>
+        <button type="button" class="lang-btn" data-lang-code="es" onclick="setLanguage('es')">🇪🇸 ES</button>
+    </div>
+
     <!-- FLOATING HAMBURGER BUTTON -->
     <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Open Menu">
         ☰
@@ -514,12 +537,6 @@
     </div>
 
     <header class="hero">
-        <div class="lang-picker">
-            <button type="button" class="lang-btn active" onclick="setLanguage('en')">🇬🇧 EN</button>
-            <button type="button" class="lang-btn" onclick="setLanguage('it')">🇮🇹 IT</button>
-            <button type="button" class="lang-btn" onclick="setLanguage('fr')">🇫🇷 FR</button>
-            <button type="button" class="lang-btn" onclick="setLanguage('es')">🇪🇸 ES</button>
-        </div>
         <span class="hero-badge">Costa Paradiso • Sardinia</span>
         <h1>Villetta Stefi e Anto</h1>
         <p data-lang="en">Your vacation home in the heart of the pink rock</p>
@@ -1487,10 +1504,13 @@
             document.body.className = 'lang-' + lang;
             
             const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            const targetBtn = Array.from(buttons).find(b => b.innerText.toLowerCase().includes(lang));
-            if (targetBtn) targetBtn.classList.add('active');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-lang-code') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
 
             localStorage.setItem('preferred_lang', lang);
         }
