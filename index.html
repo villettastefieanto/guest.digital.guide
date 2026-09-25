@@ -512,13 +512,23 @@
                 </button>
             </li>
             <li>
-                <button type="button" class="menu-link-btn" onclick="switchTab('gusto', this)">
+                <button type="button" class="menu-link-btn" onclick="switchTab('market', this)">
+                    <span class="icon">🛒</span>
+                    <span data-lang="en">Market & Fish</span>
+                    <span data-lang="it">Market & Pescheria</span>
+                    <span data-lang="de">Einkaufen & Fisch</span>
+                    <span data-lang="fr">Courses & Poissonnerie</span>
+                    <span data-lang="es">Mercado y Pescadería</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="menu-link-btn" onclick="switchTab('ristoranti', this)">
                     <span class="icon">🍽️</span>
-                    <span data-lang="en">Dining & Drinks</span>
-                    <span data-lang="it">Ristoranti & Drink</span>
-                    <span data-lang="de">Restaurants & Bars</span>
-                    <span data-lang="fr">Restaurants & Bars</span>
-                    <span data-lang="es">Restaurantes y Bares</span>
+                    <span data-lang="en">Restaurants & Drinks</span>
+                    <span data-lang="it">Ristoranti & Bar</span>
+                    <span data-lang="de">Restaurants & Drinks</span>
+                    <span data-lang="fr">Restaurants & Drinks</span>
+                    <span data-lang="es">Restaurantes y Drinks</span>
                 </button>
             </li>
             <li>
@@ -804,7 +814,7 @@
                 </ul>
             </div>
 
-            <!-- NUOVA SEZIONE SELF CHECK-IN -->
+            <!-- SELF CHECK-IN -->
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🔑</span>
@@ -1031,9 +1041,8 @@
             </div>
         </section>
 
-        <!-- TAB 4: DINING -->
-        <section id="tab-gusto" class="tab-content">
-            <!-- CARD SUPERMERCATI E PESCHERIA -->
+        <!-- TAB 4: MARKET & FISH -->
+        <section id="tab-market" class="tab-content">
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🛒</span>
@@ -1165,21 +1174,24 @@
                         ℹ️ <span data-lang="en"><strong>Note:</strong> Please check opening hours directly on-site.</span>
                         <span data-lang="it"><strong>Nota:</strong> Andare sul posto per verificare gli orari di apertura.</span>
                         <span data-lang="de"><strong>Hinweis:</strong> Öffnungszeiten bitte vor Ort überprüfen.</span>
-                        <span data-lang="fr"><strong>Remarque :</strong> Vérifier les horaires direttamente sur place.</span>
+                        <span data-lang="fr"><strong>Remarque :</strong> Vérifier les horaires directement sur place.</span>
                         <span data-lang="es"><strong>Nota:</strong> Ir al lugar para consultar los horarios de apertura.</span>
                     </div>
                     <a href="https://maps.app.goo.gl/ppu4ppXPnhLeoetu5?g_st=ic" target="_blank" rel="noopener noreferrer" class="btn-map">📍 Google Maps →</a>
                 </div>
             </div>
+        </section>
 
+        <!-- TAB 5: RESTAURANTS -->
+        <section id="tab-ristoranti" class="tab-content">
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🍽️</span>
                     <span data-lang="en">Restaurants & Drinks</span>
                     <span data-lang="it">Ristoranti & Drink</span>
-                    <span data-lang="de">Restaurants & Bars</span>
-                    <span data-lang="fr">Restaurants & Bars</span>
-                    <span data-lang="es">Restaurantes y Bares</span>
+                    <span data-lang="de">Restaurants & Drink</span>
+                    <span data-lang="fr">Restaurants & Drinks</span>
+                    <span data-lang="es">Restaurantes y Drinks</span>
                 </div>
                 
                 <div class="notice-box">
@@ -1366,7 +1378,7 @@
             </div>
         </section>
 
-        <!-- TAB 5: EXPERIENCE -->
+        <!-- TAB 6: EXPERIENCE -->
         <section id="tab-escursioni" class="tab-content">
             <div class="card">
                 <div class="card-title">
@@ -1705,7 +1717,7 @@
             </div>
         </section>
 
-        <!-- TAB 6: CONTACTS -->
+        <!-- TAB 7: CONTACTS -->
         <section id="tab-contatti" class="tab-content">
             <div class="card">
                 <div class="card-title">
